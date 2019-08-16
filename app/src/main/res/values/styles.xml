@@ -8,4 +8,31 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+
+    <style name="SabiTheme" parent="TitleBaseTheme">
+    </style>
+
+    <style name="textView">
+        <item name="android:background">#FFF</item>
+    </style>
+    <!-- Application theme. -->
+    <style name="TitleBaseTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+        <item name="android:windowNoTitle">true</item>
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <!--
+        <item name="android:textColorPrimary">@color/textColorPrimary</item>
+        <item name="android:textColorSecondary">@color/textColorSecondary</item>
+        <item name="android:windowBackground">@color/windowBackground</item>
+        <item name="editTextStyle">@style/EditText</item>
+        <item name="android:editTextStyle">@style/EditText</item>
+        -->
+    </style>
+
+
 </resources>

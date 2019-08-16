@@ -9,8 +9,7 @@
     </style>
 
 
-    <style name="SabiTheme" parent="TitleBaseTheme">
-    </style>
+    <style name="SabiTheme" parent="TitleBaseTheme"></style>
 
     <style name="textView">
         <item name="android:background">#FFF</item>
@@ -33,6 +32,15 @@
         <item name="android:editTextStyle">@style/EditText</item>
         -->
     </style>
+
+    <style name="SabiTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="SabiTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="SabiTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 
 </resources>

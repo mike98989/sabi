@@ -1,13 +1,119 @@
 package com.example.sabixyz;
 
+import android.app.ProgressDialog;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
-public class Login extends AppCompatActivity {
+import com.example.sabixyz.helper.Requests;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
+
+public class Login extends AppCompatActivity implements View.OnClickListener {
+    private EditText edt_username, edt_password;
+    private Button btn_login;
+    private LinearLayout linearLayout_error_message;
+    private TextView tv_error_message;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        linearLayout_error_message = findViewById(R.id.linearlayout_error_message);
+        tv_error_message = findViewById(R.id.tv_error_message);
+        edt_username = findViewById(R.id.edt_username);
+        edt_password = findViewById(R.id.edt_password);
+        btn_login = findViewById(R.id.btn_login);
+        btn_login.setOnClickListener(this);
+
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch(v.getId()){
+            case R.id.btn_login:
+                UserLogin();
+            break;
+
+        }
+    }
+
+
+    public void UserLogin(){
+    if(edt_username.getText().toString().isEmpty()){
+      edt_username.setError("Please Enter Username");
+    }
+    else if(edt_password.getText().toString().isEmpty()){
+        edt_password.setError("Password field cannot be empty");
+    }else{
+        final ProgressDialog pdialog = new ProgressDialog(this);
+        pdialog.setMessage("Loading... Please wait.");
+        pdialog.setCancelable(false);
+        pdialog.show();
+
+        Map<String, Object> map = new HashMap<>();
+        map.put("username", edt_username.getText().toString());
+        map.put("password", edt_password.getText().toString());
+
+
+        Requests.login(map, new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                pdialog.dismiss();
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                pdialog.dismiss();
+                String res = Objects.requireNonNull(response.body()).string();
+                Log.d("res", res);
+
+                try {
+                    JSONObject jObject =  new JSONObject(res);
+                    String strStatus = jObject.optString("status");
+                    final String strMessage = jObject.optString("message");
+                    if(!strStatus.equals("2")){
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                //pdialog.dismiss();
+                                tv_error_message.setText(strMessage);
+                                linearLayout_error_message.setVisibility(View.VISIBLE);
+                            }
+                        });
+                    }else{
+                        Intent i;
+                        i = new Intent(Login.this, MainActivity.class);
+                        startActivity(i);
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+
+
+            }
+        }, getApplicationContext());
+    }
+
+
     }
 }

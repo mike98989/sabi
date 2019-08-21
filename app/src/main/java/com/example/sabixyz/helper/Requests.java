@@ -1,11 +1,21 @@
 package com.example.sabixyz.helper;
 
+import android.app.DownloadManager;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.util.Log;
+import android.widget.ProgressBar;
 
+import com.android.volley.Request.Method;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 
 
+import java.io.StringReader;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
@@ -21,6 +31,7 @@ import okhttp3.RequestBody;
 public class Requests {
     //    private static final MediaType JSON = MediaType.parse("application/json");
     private static final String BASE_URL = "http://172.20.10.3/sabi/api";
+    private static final String TEST_URL = "https://simplifiedcoding.net/demos/marvel/";
     //private static final String BASE_URL = "http://api.pullova.com";
     private static MediaType JSON = MediaType.parse("application/json; charset=utf-8");
     public static final CookieStore cookieStore = new CookieStore();
@@ -46,7 +57,12 @@ public class Requests {
     }
 
 
+    public static void fetchRecyclerViewData(Response.Listener<String> successListener, Response.ErrorListener errorListener, Context context){
+        StringRequest stringRequest = new StringRequest(Method.GET, TEST_URL, successListener, errorListener);
+        RequestQueue requestQueue = Volley.newRequestQueue(context);
+        requestQueue.add(stringRequest);
 
+    }
 
     private static Request makeSubmitRequest_noHeader(String url, Map<String, Object> params) {
         if (!params.isEmpty()) {
@@ -97,5 +113,6 @@ public class Requests {
         f.setType(MultipartBody.FORM);
         return f.build();
     }
+
 
 }

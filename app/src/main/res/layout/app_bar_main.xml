@@ -6,19 +6,25 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <android.support.design.widget.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/SabiTheme.AppBarOverlay">
+
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/SabiTheme.PopupOverlay" />
+            app:navigationIcon="@drawable/ic_menu_black_24dp"
+            >
 
-    </android.support.design.widget.AppBarLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_bold_1"
+            android:textColor="@color/black"
+            android:textSize="35sp"
+            android:text="sabi.xyz"
+            android:textStyle="bold"/>
+        </android.support.v7.widget.Toolbar>
+
 
     <include layout="@layout/content_main" />
 

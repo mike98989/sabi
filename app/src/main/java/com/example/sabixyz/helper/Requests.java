@@ -20,7 +20,7 @@ import okhttp3.RequestBody;
 
 public class Requests {
     //    private static final MediaType JSON = MediaType.parse("application/json");
-    private static final String BASE_URL = "http://192.168.8.31/sabi/api";
+    private static final String BASE_URL = "http://172.20.10.3/sabi/api";
     //private static final String BASE_URL = "http://api.pullova.com";
     private static MediaType JSON = MediaType.parse("application/json; charset=utf-8");
     public static final CookieStore cookieStore = new CookieStore();

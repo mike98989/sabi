@@ -1,7 +1,7 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -15,14 +15,14 @@
         <item name="android:background">#FFF</item>
     </style>
     <!-- Application theme. -->
-    <style name="TitleBaseTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="TitleBaseTheme" parent="Theme.AppCompat.Light.NoActionBar">
 
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
         <item name="android:windowNoTitle">true</item>
         <item name="windowNoTitle">true</item>
         <item name="windowActionBar">false</item>
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorPrimary">@color/white</item>
+        <item name="colorPrimaryDark">@color/sabiGrey</item>
         <item name="colorAccent">@color/colorAccent</item>
         <!--
         <item name="android:textColorPrimary">@color/textColorPrimary</item>

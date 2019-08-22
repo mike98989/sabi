@@ -1,7 +1,10 @@
 package com.example.sabixyz;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,7 +16,9 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.sabixyz.helper.Requests;
+import com.example.sabixyz.model.ListItem;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -31,6 +36,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     private Button btn_login;
     private LinearLayout linearLayout_error_message;
     private TextView tv_error_message;
+    private SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,12 +89,12 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             public void onResponse(Call call, Response response) throws IOException {
                 pdialog.dismiss();
                 String res = Objects.requireNonNull(response.body()).string();
-                Log.d("res", res);
 
                 try {
                     JSONObject jObject =  new JSONObject(res);
                     String strStatus = jObject.optString("status");
                     final String strMessage = jObject.optString("message");
+                    final String strData = jObject.optString("data");
                     if(!strStatus.equals("2")){
                         runOnUiThread(new Runnable() {
                             @Override
@@ -99,9 +105,23 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                             }
                         });
                     }else{
+                        Log.e("data", strData);
+                        JSONArray array = new JSONArray(strData);
+                        JSONObject jsonObject = array.getJSONObject(0);
+                        Log.e("name", jsonObject.getString("companyname"));
+
+                        sharedPreferences = getSharedPreferences(getString(R.string.user_sharePreference_Key), MODE_PRIVATE);
+                        Editor editor = sharedPreferences.edit();
+
+                        editor.putString(getString(R.string.user_email),jsonObject.getString("email"));
+                        editor.putString(getString(R.string.user_phone),jsonObject.getString("phone"));
+                        editor.putString(getString(R.string.full_name),jsonObject.getString("fullname"));
+                        editor.commit();
+
                         Intent i;
                         i = new Intent(Login.this, MainActivity.class);
                         startActivity(i);
+
                     }
 
                 } catch (JSONException e) {

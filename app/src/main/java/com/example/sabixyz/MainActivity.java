@@ -1,11 +1,16 @@
 package com.example.sabixyz;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.View;
 import android.support.v4.view.GravityCompat;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -16,9 +21,14 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    private SharedPreferences userInfoPreference;
+    private TextView tv_nav_user_name, tv_nav_user_email, tv_nav_user_phone;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,14 +56,34 @@ public class MainActivity extends AppCompatActivity
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
 
-        get_fragment_to_display();
+        View headerLayout = navigationView.getHeaderView(0);
+        tv_nav_user_email = headerLayout.findViewById(R.id.tv_nav_user_email);
+        tv_nav_user_name = headerLayout.findViewById(R.id.tv_nav_user_name);
+        tv_nav_user_phone = headerLayout.findViewById(R.id.tv_nav_user_phone);
+
+
+        userInfoPreference = getSharedPreferences(getString(R.string.user_sharePreference_Key), MODE_PRIVATE);
+
+        Log.e("Pref", userInfoPreference.getString(getString(R.string.user_email), ""));
+        tv_nav_user_email.setText(userInfoPreference.getString(getString(R.string.user_email), ""));
+        tv_nav_user_name.setText(userInfoPreference.getString(getString(R.string.full_name), ""));
+        tv_nav_user_phone.setText(userInfoPreference.getString(getString(R.string.user_phone), ""));
+
+        Fragment landingscreenfragment = new LandingScreenFragment();
+        get_fragment_to_display(landingscreenfragment);
     }
 
-    private void get_fragment_to_display() {
+    private void get_fragment_to_display(Fragment fragmentselected) {
 
+        FragmentManager fragmentManager = this.getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fragment_container, fragmentselected);
+        fragmentTransaction.commit();
+/*
         LandingScreenFragment fragment = new LandingScreenFragment();
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.fragment_container, fragment).commit();
+*/
     }
 
     @Override
@@ -95,17 +125,28 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+            Fragment landingscreenfragment = new LandingScreenFragment();
+            get_fragment_to_display(landingscreenfragment);
+        } else if (id == R.id.nav_user) {
+            Toast.makeText(getBaseContext(), "nav_user is clicked", Toast.LENGTH_LONG).show();
+            Fragment userprofilescreenfragment = new UserProfileScreenFragment();
+            get_fragment_to_display(userprofilescreenfragment);
+        } else if (id == R.id.nav_user) {
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.nav_credit_card) {
 
-        } else if (id == R.id.nav_tools) {
+        } else if (id == R.id.nav_categories) {
 
-        } else if (id == R.id.nav_share) {
+        } else if (id == R.id.nav_books) {
 
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.nav_settings) {
 
+        } else if (id == R.id.nav_logout) {
+
+            userInfoPreference.edit().clear().apply();
+            Intent i = new Intent(MainActivity.this, Login.class);
+            startActivity(i);
+            finish();
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);

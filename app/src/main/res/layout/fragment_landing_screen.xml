@@ -3,10 +3,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/tile_background1"
+    android:tileMode="repeat"
     tools:context=".LandingScreenFragment">
 
+    <TextView
+        android:id="@+id/tv_land_screen_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_bold_1"
+        android:textColor="@color/sabiOrange"
+        android:paddingLeft="15dp"
+        android:textSize="20sp"
+        android:text="Latest Books"
+        android:textStyle="bold"/>
 
     <android.support.v7.widget.RecyclerView
+        android:layout_marginTop="25sp"
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent">

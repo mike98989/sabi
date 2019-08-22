@@ -18,7 +18,8 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_bold_1"
             android:textColor="@color/black"
-            android:textSize="35sp"
+            android:textSize="27sp"
+            android:visibility="gone"
             android:text="sabi.xyz"
             android:textStyle="bold"/>
         </android.support.v7.widget.Toolbar>

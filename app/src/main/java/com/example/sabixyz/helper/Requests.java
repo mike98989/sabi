@@ -57,8 +57,8 @@ public class Requests {
     }
 
 
-    public static void fetchRecyclerViewData(Response.Listener<String> successListener, Response.ErrorListener errorListener, Context context){
-        StringRequest stringRequest = new StringRequest(Method.GET, TEST_URL, successListener, errorListener);
+    public static void fetchRecyclerViewData(String Url, Response.Listener<String> successListener, Response.ErrorListener errorListener, Context context){
+        StringRequest stringRequest = new StringRequest(Method.GET, String.format("%s/"+Url, BASE_URL), successListener, errorListener);
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         requestQueue.add(stringRequest);
 

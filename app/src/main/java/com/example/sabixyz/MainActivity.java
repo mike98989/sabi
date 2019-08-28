@@ -28,17 +28,17 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private SharedPreferences userInfoPreference;
-    private TextView tv_nav_user_name, tv_nav_user_email, tv_nav_user_phone;
+    private TextView tv_nav_user_name, tv_nav_user_email, tv_nav_user_phone, tv_header_title;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
-        toolbar.setNavigationIcon(R.drawable.ic_menu_black_24dp);
+        toolbar.setNavigationIcon(R.drawable.ic_menu_icon);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
-
+        toolbar.setNavigationIcon(R.drawable.ic_menu_icon);
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -60,6 +60,7 @@ public class MainActivity extends AppCompatActivity
         tv_nav_user_email = headerLayout.findViewById(R.id.tv_nav_user_email);
         tv_nav_user_name = headerLayout.findViewById(R.id.tv_nav_user_name);
         tv_nav_user_phone = headerLayout.findViewById(R.id.tv_nav_user_phone);
+        tv_header_title = toolbar.findViewById(R.id.tv_app_title_header);
 
 
         userInfoPreference = getSharedPreferences(getString(R.string.user_sharePreference_Key), MODE_PRIVATE);
@@ -125,24 +126,23 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
+            tv_header_title.setText("Books");
             Fragment landingscreenfragment = new LandingScreenFragment();
             get_fragment_to_display(landingscreenfragment);
         } else if (id == R.id.nav_user) {
+            tv_header_title.setText(R.string.menu_my_profile);
             Toast.makeText(getBaseContext(), "nav_user is clicked", Toast.LENGTH_LONG).show();
             Fragment userprofilescreenfragment = new UserProfileScreenFragment();
             get_fragment_to_display(userprofilescreenfragment);
-        } else if (id == R.id.nav_user) {
-
-        } else if (id == R.id.nav_credit_card) {
-
+        }  else if (id == R.id.nav_credit_card) {
+            tv_header_title.setText(R.string.menu_payments);
         } else if (id == R.id.nav_categories) {
-
+            tv_header_title.setText(R.string.menu_categories);
         } else if (id == R.id.nav_books) {
-
+            tv_header_title.setText(R.string.menu_my_books);
         } else if (id == R.id.nav_settings) {
-
+            tv_header_title.setText(R.string.menu_settings);
         } else if (id == R.id.nav_logout) {
-
             userInfoPreference.edit().clear().apply();
             Intent i = new Intent(MainActivity.this, Login.class);
             startActivity(i);

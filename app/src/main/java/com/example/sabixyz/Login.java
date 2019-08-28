@@ -83,18 +83,28 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             @Override
             public void onFailure(Call call, IOException e) {
                 pdialog.dismiss();
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        //pdialog.dismiss();
+                        tv_error_message.setText("Please check your internet connection");
+                        linearLayout_error_message.setVisibility(View.VISIBLE);
+                    }
+                });
             }
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 pdialog.dismiss();
                 String res = Objects.requireNonNull(response.body()).string();
-
+                Log.e("msg", res);
                 try {
                     JSONObject jObject =  new JSONObject(res);
+
                     String strStatus = jObject.optString("status");
                     final String strMessage = jObject.optString("message");
                     final String strData = jObject.optString("data");
+                    final String strToken = jObject.optString("token");
                     if(!strStatus.equals("2")){
                         runOnUiThread(new Runnable() {
                             @Override
@@ -116,6 +126,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                         editor.putString(getString(R.string.user_email),jsonObject.getString("email"));
                         editor.putString(getString(R.string.user_phone),jsonObject.getString("phone"));
                         editor.putString(getString(R.string.full_name),jsonObject.getString("fullname"));
+                        editor.putString(getString(R.string.user_token),strToken);
                         editor.commit();
 
                         Intent i;

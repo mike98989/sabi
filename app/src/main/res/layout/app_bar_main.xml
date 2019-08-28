@@ -6,11 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="@drawable/top_bar_bg2">
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            app:navigationIcon="@drawable/ic_menu_black_24dp"
+            app:navigationIcon="@drawable/ic_menu_icon"
             >
 
         <TextView
@@ -18,12 +22,12 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_bold_1"
             android:textColor="@color/black"
-            android:textSize="27sp"
-            android:visibility="gone"
-            android:text="sabi.xyz"
+            android:textSize="20sp"
+            android:text="Books"
+            android:id="@+id/tv_app_title_header"
             android:textStyle="bold"/>
         </android.support.v7.widget.Toolbar>
-
+    </RelativeLayout>
 
     <include layout="@layout/content_main" />
 

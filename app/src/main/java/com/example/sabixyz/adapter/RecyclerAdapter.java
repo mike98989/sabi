@@ -40,7 +40,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         final ListItem listItem = listitems.get(i);
         holder.textViewHead.setText(listItem.getHead());
         holder.textViewDesc.setText(listItem.getDescription());
-        Picasso.get().load(listItem.getImageUrl()).into(holder.imageView);
+        Picasso.get().load("http://172.20.10.3/sabi/"+listItem.getImageUrl()).into(holder.imageView);
     }
 
     @Override

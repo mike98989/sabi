@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/tile_background1"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:tileMode="repeat"
     tools:context=".LandingScreenFragment">
 
@@ -15,15 +15,38 @@
         android:textColor="@color/sabiOrange"
         android:paddingLeft="15dp"
         android:textSize="20sp"
+        android:visibility="gone"
         android:text="Latest Books"
         android:textStyle="bold"/>
 
-    <android.support.v7.widget.RecyclerView
-        android:layout_marginTop="25sp"
-        android:id="@+id/recyclerView"
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tabLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        app:tabGravity="fill"
+        app:tabIndicatorColor="@color/sabiOrange"
+        android:paddingBottom="5dp"
+        app:tabIndicatorHeight="1dp"
+        app:tabSelectedTextColor="@color/sabiOrange"
+        app:tabBackground="@color/transparent"
+        app:tabTextColor="@color/black"
+        android:layout_below="@id/tv_land_screen_title"
+        app:tabTextAppearance="@style/CustomTextAppearanceTab"
+        >
+    </android.support.design.widget.TabLayout>
 
-    </android.support.v7.widget.RecyclerView>
 
-</FrameLayout>
+    <android.support.v4.view.ViewPager
+        android:layout_margin="0dp"
+        android:padding="0dp"
+        android:layout_below="@id/tabLayout"
+        android:id="@+id/viewPager"
+        android:scrollbarAlwaysDrawHorizontalTrack="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </android.support.v4.view.ViewPager>
+
+
+
+</RelativeLayout>

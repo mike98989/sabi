@@ -24,19 +24,19 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.394" />
 
-<RelativeLayout
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintTop_toBottomOf="@+id/imageView3"
     android:padding="5dp"
-    android:orientation="horizontal">
+    android:orientation="vertical">
     <Button
         android:id="@+id/btn_signup"
-        android:layout_width="110dp"
+        android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_marginTop="8dp"
-        style="@style/TransparentBlackCurvedButton"
+        android:background="@drawable/rounded_black_btn_no_border"
         android:text="Sign Up"
         android:theme="@style/AppTheme.Button"
         android:textAllCaps="false"
@@ -45,16 +45,15 @@
 
     <Button
         android:id="@+id/btn_signin"
-        android:layout_width="110dp"
+        android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:layout_marginTop="8dp"
-        style="@style/TransparentBlackCurvedButton"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/rounded_orange_btn_no_border"
         android:text="Sign In"
-        android:layout_alignParentRight="true"
         android:theme="@style/AppTheme.Button"
         android:textAllCaps="false"
         android:textColor="@color/white"
         />
-</RelativeLayout>
+</LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

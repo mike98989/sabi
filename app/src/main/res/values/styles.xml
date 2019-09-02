@@ -33,11 +33,12 @@
         -->
     </style>
 
-    <style name="RedCurvedButton" parent="@style/Widget.AppCompat.Button.Colored">
+    <style name="RoundedBlackBtnNoBorder" parent="@style/Widget.AppCompat.Button.Colored">
         <item name="colorButtonNormal">@color/sabiOrange</item>
-        <item name="android:background">@drawable/rounded_black_btn</item>
+        <item name="android:background">@drawable/rounded_black_btn_no_border</item>
         <item name="android:gravity">center</item>
     </style>
+
 
     <style name="TransparentBlackCurvedButton" parent="@style/Widget.AppCompat.Button.Colored">
         <item name="android:background">@drawable/button_black_transparent_bg</item>

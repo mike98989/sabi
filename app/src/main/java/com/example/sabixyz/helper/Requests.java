@@ -56,6 +56,9 @@ public class Requests {
         performRequest(makeSubmitRequest_noHeader(String.format("%s/user_login", BASE_URL), params), callback, context);
     }
 
+    public static void signup(Map<String, Object> params, Callback callback, Context context) {
+        performRequest(makeSubmitRequest_noHeader(String.format("%s/user_signup", BASE_URL), params), callback, context);
+    }
 
     public static void fetchRecyclerViewData(String Url, Response.Listener<String> successListener, Response.ErrorListener errorListener, Context context){
         StringRequest stringRequest = new StringRequest(Method.GET, String.format("%s/"+Url, BASE_URL), successListener, errorListener);

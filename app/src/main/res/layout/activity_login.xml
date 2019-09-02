@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/book2_bg"
+    android:background="@drawable/book1_bg"
     android:backgroundTint="@color/black"
     android:backgroundTintMode="add"
     android:padding="50dp"
@@ -23,7 +23,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:src="@drawable/sabi_logo_white_sm"
+        android:src="@drawable/sabi_logo_white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -88,7 +88,7 @@
         android:drawablePadding="5dp"
         android:inputType="textEmailAddress"
         android:padding="5dp"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         app:layout_constraintTop_toBottomOf="@+id/linearlayout_error_message"
         tools:layout_editor_absoluteX="20dp" />
 

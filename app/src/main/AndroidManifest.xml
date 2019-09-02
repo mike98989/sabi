@@ -15,13 +15,14 @@
         android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".TitleActivity"></activity>
+        android:theme="@style/TitleBaseTheme">
+        <activity android:name=".SignupActivity"></activity>
+        <activity android:name=".TitleActivity" />
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main"
-            android:theme="@style/SabiTheme.NoActionBar"></activity>
-        <activity android:name=".Login"></activity>
+            android:theme="@style/SabiTheme.NoActionBar" />
+        <activity android:name=".Login" />
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

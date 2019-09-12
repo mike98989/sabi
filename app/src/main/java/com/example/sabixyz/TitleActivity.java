@@ -30,6 +30,7 @@ public class TitleActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i_title = new Intent(TitleActivity.this.getApplicationContext(), Login.class);
+                i_title.putExtra("user_email","");
                 TitleActivity.this.startActivity(i_title);
                 TitleActivity.this.finish();
             }

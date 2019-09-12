@@ -30,6 +30,7 @@
     <string name="signup_password">Password</string>
     <string name="signup_confirm_password">Confirm Password</string>
     <string name="signup_asterics">********</string>
+    <string name="signup_confirm_code">Confirmation Code</string>
     <string name="not_match_password">Passwords Do Not Match! Please try again</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

@@ -2,6 +2,7 @@ package com.example.sabixyz;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -29,7 +30,7 @@ import okhttp3.Response;
 
 public class SignupActivity extends AppCompatActivity {
     private EditText useremail, userphone,userpassword,confirmpassword;
-    private TextView returnmessage, signup_success_message;
+    private TextView returnmessage, signup_success_message, confirmation_code_link, signin_link;
     private Button btn_signup, btn_signup_success_continue;
     private LinearLayout user_signup_form, layout_success_message;
     String password, confirm_password, user_email;
@@ -48,16 +49,41 @@ public class SignupActivity extends AppCompatActivity {
         user_signup_form = findViewById(R.id.linearlayout_user_signup);
         layout_success_message = findViewById(R.id.linearlayout_user_success_message);
         btn_signup = findViewById(R.id.btn_signup);
+        signin_link = findViewById(R.id.tv_already_have_account);
+        confirmation_code_link = findViewById(R.id.tv_already_confirmation_code);
         btn_signup_success_continue = findViewById(R.id.btn_signup_success_continue);
+
+        signin_link.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(SignupActivity.this, Login.class);
+                i.putExtra("user_email","");
+                startActivity(i);
+            }
+        });
+
+        confirmation_code_link.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle b = new Bundle();
+                b.putString("email", "");
+                SignupConfirmationFragment fragment = new SignupConfirmationFragment();
+                fragment.setArguments(b);
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                fragmentManager.beginTransaction().replace(R.id.fragment_container, fragment).commit();
+            }
+        });
+
 
         btn_signup_success_continue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-/*
-                SignupConfirmationFragment fragment = new SignupConfirmationFragment(user_email);
+                Bundle b = new Bundle();
+                b.putString("email", useremail.getText().toString());
+                SignupConfirmationFragment fragment = new SignupConfirmationFragment();
+                fragment.setArguments(b);
                 FragmentManager fragmentManager = getSupportFragmentManager();
                 fragmentManager.beginTransaction().replace(R.id.fragment_container, fragment).commit();
-                */
             }
         });
 

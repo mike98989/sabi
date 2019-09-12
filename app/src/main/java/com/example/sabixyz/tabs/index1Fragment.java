@@ -71,8 +71,6 @@ public class index1Fragment extends Fragment {
             int Refreshcounter = 1;
             @Override
             public void onRefresh() {
-
-
                 FragmentTransaction ft = getFragmentManager().beginTransaction();
                 if (Build.VERSION.SDK_INT >= 26) {
                     ft.setReorderingAllowed(false);
@@ -120,9 +118,7 @@ public class index1Fragment extends Fragment {
                                                    }
                                                    recycleradapter = new RecyclerAdapter(listitems, getContext());
                                                    recyclerView.setAdapter(recycleradapter);
-
                                                    //Log.e("Msg", array.toString());
-
                                                } catch (JSONException e) {
                                                    e.printStackTrace();
                                                }

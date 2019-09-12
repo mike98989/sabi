@@ -35,16 +35,25 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     private EditText edt_username, edt_password;
     private Button btn_login;
     private LinearLayout linearLayout_error_message;
-    private TextView tv_error_message;
+    private TextView tv_error_message, signupLink;
     private SharedPreferences sharedPreferences;
+    private String user_email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        user_email = getIntent().getStringExtra("user_email");
         linearLayout_error_message = findViewById(R.id.linearlayout_error_message);
         tv_error_message = findViewById(R.id.tv_error_message);
+        signupLink = findViewById(R.id.tv_sign_up);
+        signupLink.setOnClickListener(this);
         edt_username = findViewById(R.id.edt_username);
+
+        ////IF THE EMAIL IS NOT EMPTY, FILL USERNAME FIELD
+        if(!user_email.isEmpty()){
+            edt_username.setText(user_email);
+        }
         edt_password = findViewById(R.id.edt_password);
         btn_login = findViewById(R.id.btn_login);
         btn_login.setOnClickListener(this);
@@ -57,6 +66,9 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             case R.id.btn_login:
                 UserLogin();
             break;
+            case R.id.tv_sign_up:
+                Intent i = new Intent(Login.this, SignupActivity.class);
+                startActivity(i);
 
         }
     }
@@ -118,7 +130,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                         Log.e("data", strData);
                         JSONArray array = new JSONArray(strData);
                         JSONObject jsonObject = array.getJSONObject(0);
-                        Log.e("name", jsonObject.getString("companyname"));
 
                         sharedPreferences = getSharedPreferences(getString(R.string.user_sharePreference_Key), MODE_PRIVATE);
                         Editor editor = sharedPreferences.edit();

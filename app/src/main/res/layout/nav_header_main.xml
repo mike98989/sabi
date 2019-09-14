@@ -21,12 +21,12 @@
         android:orientation="vertical">
         <de.hdodenhof.circleimageview.CircleImageView
             xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/imageView"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
+            android:id="@+id/circleImage_nav_header_profile_image"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:contentDescription="@string/nav_header_desc"
             android:src="@drawable/default_user_icon"
-            app:civ_border_width="5dp"
+            app:civ_border_width="2dp"
             android:elevation="10dp"
             android:paddingTop="@dimen/nav_header_vertical_spacing"
             app:civ_border_color="@color/white"/>

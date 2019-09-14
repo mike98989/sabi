@@ -30,6 +30,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 
 public class index1Fragment extends Fragment {
@@ -106,6 +107,7 @@ public class index1Fragment extends Fragment {
                                            @Override
                                            public void onResponse(String response) {
                                                progressDialog.dismiss();
+                                               Log.e("response", response.toString());
 
                                                try {
                                                    JSONArray array = new JSONArray(response);

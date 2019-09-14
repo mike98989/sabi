@@ -15,6 +15,7 @@ import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 
 
+import java.io.File;
 import java.io.StringReader;
 import java.util.Map;
 import java.util.Set;
@@ -31,7 +32,6 @@ import okhttp3.RequestBody;
 public class Requests {
     //    private static final MediaType JSON = MediaType.parse("application/json");
     private static final String BASE_URL = "http://172.20.10.3/sabi/api";
-    private static final String TEST_URL = "https://simplifiedcoding.net/demos/marvel/";
     //private static final String BASE_URL = "http://api.pullova.com";
     private static MediaType JSON = MediaType.parse("application/json; charset=utf-8");
     public static final CookieStore cookieStore = new CookieStore();
@@ -71,6 +71,22 @@ public class Requests {
 
     }
 
+    public static void uploadImage(Map<String, Object> params, File filetoupload, String cookie, Callback callback, Context context) {
+        performRequest(makeImageSubmitRequest_withHeader(String.format("%s/upload_image", BASE_URL), cookie, params, filetoupload), callback, context);
+    }
+
+    private static Request makeImageSubmitRequest_withHeader(String url, String cookie, Map<String, Object> params, File filetoupload) {
+        if (!params.isEmpty()) {
+            return new Request
+                    .Builder()
+                    .addHeader("Cookie", cookie)
+                    .url(url)
+                    .post(CreateImageFormToSubmit(params, filetoupload))
+                    .build();
+        }
+        return null;
+    }
+
     private static Request makeSubmitRequest_noHeader(String url, Map<String, Object> params) {
         if (!params.isEmpty()) {
             return new Request
@@ -81,6 +97,7 @@ public class Requests {
         }
         return null;
     }
+
 
     private static Request makeSubmitJsonRequest_noHeader(String url, Map<String, Object> params) {
 
@@ -105,6 +122,20 @@ public class Requests {
     }
 
 
+    private static RequestBody CreateImageFormToSubmit(Map<String, Object> params, File file) {
+        Set<String> keys = params.keySet();
+        MultipartBody.Builder f = new MultipartBody.Builder();
+        f.setType(MultipartBody.FORM).addFormDataPart("ImageFile", file.getName(),
+                RequestBody.create(MediaType.parse("image/jpeg"), file));
+
+        for (String key : keys) {
+            f.addFormDataPart(key, String.valueOf(params.get(key)));
+            Log.d("key-value pair ==", key + " : " + params.get(key));
+        }
+
+        f.setType(MultipartBody.FORM);
+        return f.build();
+    }
 
 
     private static RequestBody CreateFormToSubmit(Map<String, Object> params) {

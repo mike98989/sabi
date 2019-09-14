@@ -103,7 +103,7 @@
 
             <EditText
                 style="@style/textView"
-                android:id="@+id/tv_user_firstname"
+                android:id="@+id/edt_user_firstname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/avenir_35_light"
@@ -131,7 +131,7 @@
 
             <EditText
                 style="@style/textView"
-                android:id="@+id/tv_user_lastname"
+                android:id="@+id/edt_user_lastname"
                 android:layout_width="match_parent"
                 android:textSize="18dp"
                 android:fontFamily="@font/avenir_35_light"
@@ -161,7 +161,7 @@
 
             <EditText
                 style="@style/textView"
-                android:id="@+id/tv_user_phone"
+                android:id="@+id/edt_user_phone"
                 android:layout_width="match_parent"
                 android:textSize="18dp"
                 android:fontFamily="@font/avenir_35_light"
@@ -188,7 +188,7 @@
                 android:text="Email" />
 
             <EditText
-                android:id="@+id/tv_user_email2"
+                android:id="@+id/edt_user_email2"
                 android:layout_width="match_parent"
                 android:textSize="18dp"
                 style="@style/textView"

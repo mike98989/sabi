@@ -147,6 +147,13 @@ public class MainActivity extends AppCompatActivity
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.fragment_container, fragmentselected);
         fragmentTransaction.commit();
+        fragmentManager.popBackStack();
+
+        //getSupportFragmentManager().popBackStack("profile", androidx.fragment.app.FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
+
+
+
 /*
         LandingScreenFragment fragment = new LandingScreenFragment();
         FragmentManager fragmentManager = getSupportFragmentManager();
@@ -156,12 +163,22 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
+        Log.e("BackPressed", "back is pressed");
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
+
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+             if(getFragmentManager().getBackStackEntryCount() == 0) {
+                 Log.e("BackPressed2", "back is pressed but entered here");
+            //super.onBackPressed();
         }
+        else {
+            getFragmentManager().popBackStack();
+        }
+        }
+
+
     }
 
     @Override
@@ -221,4 +238,7 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+
+
 }

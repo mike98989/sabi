@@ -71,6 +71,17 @@ private ImageView mProfileImageView;
         mEmail2.setText(userInfoPreference.getString(getString(R.string.user_email), ""));
         mPhonenumber.setText(userInfoPreference.getString(getString(R.string.user_phone), ""));
 
+
+        String profileImageBase64String = userInfoPreference.getString(getString(R.string.user_profile_image_base64_string),"");
+        if (profileImageBase64String != null && !profileImageBase64String.isEmpty()) {
+            byte[] b = Base64.decode(profileImageBase64String, Base64.DEFAULT);
+            InputStream is = new ByteArrayInputStream(b);
+            mProfileImageView.setImageBitmap(BitmapFactory.decodeStream(is));
+        } else {
+            mProfileImageView.setImageDrawable(getResources().getDrawable(R.drawable.default_user_icon));
+        }
+
+
         mBtnEditProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -78,6 +89,7 @@ private ImageView mProfileImageView;
                 UserEditProfileScreenFragment fragment = new UserEditProfileScreenFragment();
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 fragmentManager.beginTransaction().replace(R.id.fragment_container, fragment).commit();
+                fragmentManager.popBackStack();
             }
         });
 

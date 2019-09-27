@@ -75,5 +75,4 @@ public class LandingScreenFragment extends Fragment {
     }
 
 
-
 }

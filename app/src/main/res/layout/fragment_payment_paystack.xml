@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp"
+    android:background="@color/sabiLighterGrey"
+    tools:context=".PaymentPaystackFragment">
+
+
+    <LinearLayout
+        android:id="@+id/linearlayout_payment_screen_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:fontFamily="@font/avenir_35_light"
+            android:text="Current Bill/Amount"/>
+
+
+        <TextView
+            android:id="@+id/tv_amount_to_pay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            android:fontFamily="@font/poppins_bold_1"
+            android:text="N500.00"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/linearlayout_card_fields"
+        android:layout_below="@+id/linearlayout_payment_screen_title"
+        android:layout_marginTop="100dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:paddingLeft="7dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:hint="Card Number"
+            style="@style/textView"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:layout_width="200dp"
+                android:layout_height="60dp"
+                android:paddingLeft="7dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:hint="MM/YY"
+                style="@style/textView"/>
+
+
+            <EditText
+                android:layout_marginLeft="10dp"
+                android:layout_width="200dp"
+                android:layout_height="60dp"
+                android:paddingLeft="7dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:hint="CVV"
+                style="@style/textView"/>
+
+        </LinearLayout>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/rounded_orange_btn_no_border"
+            android:textColor="@color/white"
+            android:textAllCaps="false"
+            android:layout_marginTop="20dp"
+            android:text="Pay Now"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_below="@+id/linearlayout_card_fields"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="Secure with"
+            />
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_marginLeft="5dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/paystack_full_img_logo"/>
+    </LinearLayout>
+</RelativeLayout>

@@ -22,6 +22,7 @@ import com.android.volley.VolleyError;
 import com.example.sabixyz.R;
 import com.example.sabixyz.adapter.RecyclerAdapter;
 import com.example.sabixyz.helper.Requests;
+import com.example.sabixyz.listener.RecyclerItemClickListener;
 import com.example.sabixyz.model.ListItem;
 
 import org.json.JSONArray;
@@ -63,7 +64,19 @@ public class index1Fragment extends Fragment {
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2);
         // Set layout manager.
         recyclerView.setLayoutManager(gridLayoutManager);
+        /*
+        recyclerView.addOnItemTouchListener(
+                new RecyclerItemClickListener(getContext(), recyclerView ,new RecyclerItemClickListener.OnItemClickListener() {
+                    @Override public void onItemClick(View view, int position) {
+                        // do whatever
+                    }
 
+                    @Override public void onLongItemClick(View view, int position) {
+                        // do whatever
+                    }
+                })
+        );
+        */
         listitems = new ArrayList<>();
 
         this.loadRecyclerViewData();
@@ -77,8 +90,6 @@ public class index1Fragment extends Fragment {
                     ft.setReorderingAllowed(false);
                 }
                 ft.detach(index1Fragment.this).attach(index1Fragment.this).commit();
-
-
 
 
                 if (Refreshcounter > 5) {
@@ -115,7 +126,7 @@ public class index1Fragment extends Fragment {
 
                                                    for (int i=0; i<array.length(); i++){
                                                        JSONObject o = array.getJSONObject(i);
-                                                       ListItem item = new ListItem(o.getString("book_title"), o.getString("book_author"),o.getString("book_cover"));
+                                                       ListItem item = new ListItem(o.getString("book_title"),  o.getString("book_desc"),o.getString("book_author"),o.getString("book_cover"), o.getString("book_id"), o.getString("book_amount"));
                                                        listitems.add(item);
                                                    }
                                                    recycleradapter = new RecyclerAdapter(listitems, getContext());

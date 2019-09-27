@@ -17,6 +17,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/TitleBaseTheme">
+        <meta-data
+            android:name="co.paystack.android.PublicKey"
+            android:value="pk_test_ba985e21c8a78ea8da3609b479b2f087944dcb00"/>
+
+
         <activity android:name=".SignupActivity"></activity>
         <activity android:name=".TitleActivity" />
         <activity

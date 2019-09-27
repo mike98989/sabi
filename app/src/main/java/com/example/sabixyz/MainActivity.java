@@ -123,6 +123,7 @@ public class MainActivity extends AppCompatActivity
                         final String encodedImage = Base64.encodeToString(byteArrayOutputStream.toByteArray(), Base64.DEFAULT);
                         Log.e("EncodedImage", encodedImage);
                         userInfoPreference.edit().putString(getString(R.string.user_profile_image_base64_string),encodedImage);
+                        userInfoPreference.edit().apply();
                     }
 
                     @Override
@@ -163,21 +164,36 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
+
         Log.e("BackPressed", "back is pressed");
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
 
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-             if(getFragmentManager().getBackStackEntryCount() == 0) {
+            if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
+                getSupportFragmentManager().popBackStackImmediate();
+            } else {
+                finish();
+            }
+
+        }
+
+        //super.onBackPressed();
+         /*
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            if(getFragmentManager().getBackStackEntryCount() == 0) {
                  Log.e("BackPressed2", "back is pressed but entered here");
             //super.onBackPressed();
         }
         else {
             getFragmentManager().popBackStack();
-        }
-        }
+        //}
 
+        }
+*/
 
     }
 
@@ -220,6 +236,8 @@ public class MainActivity extends AppCompatActivity
             get_fragment_to_display(userprofilescreenfragment);
         }  else if (id == R.id.nav_credit_card) {
             tv_header_title.setText(R.string.menu_payments);
+            Fragment payments = new PaymentFragment();
+            get_fragment_to_display(payments);
         } else if (id == R.id.nav_categories) {
             tv_header_title.setText(R.string.menu_categories);
         } else if (id == R.id.nav_books) {
@@ -239,6 +257,12 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        //OnResume Fragment
+    }
 
 
 }

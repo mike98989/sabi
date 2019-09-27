@@ -112,7 +112,7 @@ public class index3Fragment extends Fragment {
 
                                 for (int i = 0; i < array.length(); i++) {
                                     JSONObject o = array.getJSONObject(i);
-                                    ListItem item = new ListItem(o.getString("book_title"), o.getString("book_author"), o.getString("book_cover"));
+                                    ListItem item = new ListItem(o.getString("book_title"),  o.getString("book_desc"),o.getString("book_author"),o.getString("book_cover"), o.getString("book_id"),o.getString("book_amount"));
                                     listitems.add(item);
                                 }
                                 recycleradapter3 = new RecyclerAdapter(listitems, getContext());

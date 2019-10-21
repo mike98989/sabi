@@ -15,6 +15,7 @@
         <item name="android:background">#FFF</item>
     </style>
     <!-- Application theme. -->
+
     <style name="TitleBaseTheme" parent="Theme.AppCompat.Light.NoActionBar">
 
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->

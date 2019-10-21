@@ -62,15 +62,6 @@
                 android:padding="10dp"
                 android:layout_height="wrap_content">
 
-                <Button
-                    android:id="@+id/btn_save_for_later"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:background="@drawable/rounded_orange_btn_no_border"
-                    android:text="Save For Later"
-                    android:layout_marginBottom="10dp"
-                    android:textColor="@color/white"
-                    android:textAllCaps="false"/>
 
                 <Button
                     android:id="@+id/btn_buy_book"
@@ -78,8 +69,21 @@
                     android:layout_height="40dp"
                     android:background="@drawable/rounded_black_btn_no_border"
                     android:text="Buy Book"
+                    android:layout_marginBottom="10dp"
                     android:textColor="@color/white"
                     android:textAllCaps="false"/>
+
+
+                <Button
+                    android:id="@+id/btn_save_for_later"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="@drawable/rounded_orange_btn_no_border"
+                    android:text="Save For Later"
+
+                    android:textColor="@color/white"
+                    android:textAllCaps="false"/>
+
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

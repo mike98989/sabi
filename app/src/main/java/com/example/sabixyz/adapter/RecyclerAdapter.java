@@ -1,6 +1,7 @@
 package com.example.sabixyz.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -16,6 +17,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.sabixyz.BookDetailsFragment;
+import com.example.sabixyz.BookReaderFragment;
+import com.example.sabixyz.BookReadyActivity;
+import com.example.sabixyz.Login;
+import com.example.sabixyz.MainActivity;
 import com.example.sabixyz.R;
 import com.example.sabixyz.model.ListItem;
 import com.squareup.picasso.Picasso;
@@ -29,11 +34,14 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
     private List<ListItem> listitems;
     private Context context;
+    private int clickType;
 
-    public RecyclerAdapter(List<ListItem> listitems, Context context) {
+    public RecyclerAdapter(List<ListItem> listitems, Context context, int clickType) {
         this.listitems = listitems;
         this.context = context;
+        this.clickType = clickType;
     }
+
 
     @NonNull
     @Override
@@ -82,11 +90,14 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
             // get the position on recyclerview.
             int pos = getLayoutPosition();
 
-
-            SingleItemClick(view, pos, list);    // click on recyclerview item.
+            if(clickType==1) {
+                open_details(view, pos, list);    // click on recyclerview item.
+            }else if(clickType==2){
+                open_book(view, pos, list);
+            }
         }
 
-        private void SingleItemClick(View view, int pos, ListItem listItem) {
+        private void open_details(View view, int pos, ListItem listItem) {
             Log.e("Item", "Itemclicked"+pos);
 
             Bundle b = new Bundle();
@@ -110,5 +121,34 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
             fragmentManager.popBackStack();
             */
         }
+
+
+        private void open_book(View view, int pos, ListItem listItem) {
+            //Log.e("list", list.toString());
+
+            Bundle b = new Bundle();
+            b.putString("id", list.getId());
+            b.putString("description", list.getDescription());
+            b.putString("imageurl", list.getImageUrl());
+            b.putString("title", list.getHead());
+            b.putString("author",list.getAuthor());
+            b.putString("amount", list.getAmount());
+            b.putString("list", list.toString());
+            AppCompatActivity activity = (AppCompatActivity) view.getContext();
+
+            Intent i = new Intent(activity, BookReadyActivity.class);
+            i.putExtra("imageurl", list.getImageUrl());
+            i.putExtra("content", list.getContent());
+            i.putExtra("desc", list.getDescription());
+            activity.startActivity(i);
+
+            /*
+            MainActivity.tv_header_title.setText(list.getHead());
+            Fragment myFragment = new BookReaderFragment();
+            myFragment.setArguments(b);
+            activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, myFragment).addToBackStack(null).commit();
+            */
+        }
+
     }
 }

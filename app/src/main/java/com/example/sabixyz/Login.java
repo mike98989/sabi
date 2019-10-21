@@ -127,7 +127,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                             }
                         });
                     }else{
-                        Log.e("data", strData);
+                        Log.e("datadd", strData);
                         JSONArray array = new JSONArray(strData);
                         JSONObject jsonObject = array.getJSONObject(0);
 
@@ -139,7 +139,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                         editor.putString(getString(R.string.last_name),jsonObject.getString("last_name"));
                         editor.putString(getString(R.string.first_name),jsonObject.getString("first_name"));
                         editor.putString(getString(R.string.user_token),strToken);
-                        editor.putString(getString(R.string.cookie),jsonObject.getString(""));
+                        //editor.putString(getString(R.string.cookie),jsonObject.getString(""));
                         editor.putString(getString(R.string.user_profile_image_url),jsonObject.getString("image"));
                         editor.commit();
 

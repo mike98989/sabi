@@ -75,9 +75,20 @@ public class Requests {
 
     }
 
+    public static void fetchRecyclerViewDataNew(Map<String, Object> params,String url,  Callback callback, Context context) {
+        performRequest(makeSubmitRequest_noHeader(String.format("%s/"+url, BASE_URL), params), callback, context);
+    }
+
+
+    public static void verifyTransaction(Map<String, Object> params, Callback callback, Context context) {
+        performRequest(makeSubmitRequest_noHeader(String.format("%s/verifyTransaction", BASE_URL), params), callback, context);
+    }
+
     public static void uploadImage(Map<String, Object> params, File filetoupload, String cookie, Callback callback, Context context) {
         performRequest(makeImageSubmitRequest_withHeader(String.format("%s/upload_image", BASE_URL), cookie, params, filetoupload), callback, context);
     }
+
+
 
     private static Request makeImageSubmitRequest_withHeader(String url, String cookie, Map<String, Object> params, File filetoupload) {
         if (!params.isEmpty()) {

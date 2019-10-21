@@ -63,6 +63,7 @@ public class LandingScreenFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_landing_screen, container, false);
 
         viewPager = view.findViewById(R.id.viewPager);
+
         tabLayout = view.findViewById(R.id.tabLayout);
         tabadapter = new TabAdapter(this.getFragmentManager());
         tabadapter.addFragment(new index1Fragment(), "All Books");

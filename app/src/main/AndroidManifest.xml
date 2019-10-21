@@ -7,7 +7,7 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -17,12 +17,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/TitleBaseTheme">
+        <activity android:name=".BookReadyActivity"></activity>
+
         <meta-data
             android:name="co.paystack.android.PublicKey"
-            android:value="pk_test_ba985e21c8a78ea8da3609b479b2f087944dcb00"/>
+            android:value="pk_test_3f96c9313eb9fd480d99bbc3231114b6ceb3534b" />
 
-
-        <activity android:name=".SignupActivity"></activity>
+        <activity android:name=".SignupActivity" />
         <activity android:name=".TitleActivity" />
         <activity
             android:name=".MainActivity"

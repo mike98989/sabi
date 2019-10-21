@@ -51,11 +51,11 @@ private SharedPreferences userInfoPreference;
         if (getArguments() != null) {
             Title = getArguments().getString("title");
             mTitle.setText(Title);
-            Log.e("desc", getArguments().getString("description"));
+            //Log.e("desc", getArguments().getString("description"));
             mDescription.setText(getArguments().getString("description").replaceAll("\\n","\n"));
             Picasso.get().load("http://172.20.10.3/sabi/"+getArguments().getString("imageurl")).into(mImageView);
-
-            Log.e("Title", Title);
+            mBuyBookButton.setText("Buy Book "+getString(R.string.currency)+getArguments().getString("amount"));
+            //Log.e("Title", Title);
         }
         return view;
     }

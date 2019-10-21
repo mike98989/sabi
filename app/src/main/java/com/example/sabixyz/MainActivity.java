@@ -42,7 +42,8 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private SharedPreferences userInfoPreference;
-    private TextView tv_nav_user_name, tv_nav_user_email, tv_nav_user_phone, tv_header_title;
+    public static TextView tv_header_title;
+    private TextView tv_nav_user_name, tv_nav_user_email, tv_nav_user_phone;
     ImageView mProfileImageView;
 
     @Override
@@ -240,8 +241,12 @@ public class MainActivity extends AppCompatActivity
             get_fragment_to_display(payments);
         } else if (id == R.id.nav_categories) {
             tv_header_title.setText(R.string.menu_categories);
+            Fragment CategoriesScreenFragment = new CategoriesScreenFragment();
+            get_fragment_to_display(CategoriesScreenFragment);
         } else if (id == R.id.nav_books) {
             tv_header_title.setText(R.string.menu_my_books);
+            Fragment mybooks = new MyBooksFragment();
+            get_fragment_to_display(mybooks);
         } else if (id == R.id.nav_settings) {
             tv_header_title.setText(R.string.menu_settings);
         } else if (id == R.id.nav_logout) {

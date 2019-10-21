@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.android.volley.Response;
@@ -24,14 +25,21 @@ import com.example.sabixyz.adapter.RecyclerAdapter;
 import com.example.sabixyz.helper.Requests;
 import com.example.sabixyz.listener.RecyclerItemClickListener;
 import com.example.sabixyz.model.ListItem;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+
+import okhttp3.Call;
+import okhttp3.Callback;
 
 
 public class index1Fragment extends Fragment {
@@ -39,9 +47,10 @@ public class index1Fragment extends Fragment {
     private RecyclerView.Adapter recycleradapter;
     private List<ListItem> listitems;
     SwipeRefreshLayout pullToRefresh;
-    FragmentManager fragmentManager;
+    String api_to_call, query_ID="";
+    LinearLayout LInearLayout_NoContentYet;
     public index1Fragment() {
-        // Required empty public constructor
+
     }
 
 
@@ -56,27 +65,23 @@ public class index1Fragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
        View view =  inflater.inflate(R.layout.fragment_index1, container, false);
+       LInearLayout_NoContentYet = view.findViewById(R.id.linearlayout_no_content);
         pullToRefresh = view.findViewById(R.id.pullToRefresh);
         recyclerView = view.findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
-        //recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
 
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2);
         // Set layout manager.
         recyclerView.setLayoutManager(gridLayoutManager);
-        /*
-        recyclerView.addOnItemTouchListener(
-                new RecyclerItemClickListener(getContext(), recyclerView ,new RecyclerItemClickListener.OnItemClickListener() {
-                    @Override public void onItemClick(View view, int position) {
-                        // do whatever
-                    }
 
-                    @Override public void onLongItemClick(View view, int position) {
-                        // do whatever
-                    }
-                })
-        );
-        */
+        if (getArguments() != null) {
+            api_to_call = getArguments().getString("api_to_call");
+            query_ID = getArguments().getString("ID");
+        }else{
+            api_to_call = "get_all_books";
+        }
+
         listitems = new ArrayList<>();
 
         this.loadRecyclerViewData();
@@ -114,38 +119,62 @@ public class index1Fragment extends Fragment {
         progressDialog.setMessage("Loading Data");
         progressDialog.show();
 
-        Requests.fetchRecyclerViewData("get_all_books", new com.android.volley.Response.Listener<String>() {
-                                           @Override
-                                           public void onResponse(String response) {
-                                               progressDialog.dismiss();
-                                               Log.e("response", response.toString());
+        Map<String, Object> map = new HashMap<>();
+        map.put("category_ID", query_ID);
 
-                                               try {
-                                                   JSONArray array = new JSONArray(response);
-                                                   //Log.e("response", array.toString());
+        Requests.fetchRecyclerViewDataNew(map, api_to_call, new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                progressDialog.dismiss();
+                Log.e("response", "Somoething went wrong! please try again");
+            }
 
-                                                   for (int i=0; i<array.length(); i++){
-                                                       JSONObject o = array.getJSONObject(i);
-                                                       ListItem item = new ListItem(o.getString("book_title"),  o.getString("book_desc"),o.getString("book_author"),o.getString("book_cover"), o.getString("book_id"), o.getString("book_amount"));
-                                                       listitems.add(item);
-                                                   }
-                                                   recycleradapter = new RecyclerAdapter(listitems, getContext());
-                                                   recyclerView.setAdapter(recycleradapter);
-                                                   //Log.e("Msg", array.toString());
-                                               } catch (JSONException e) {
-                                                   e.printStackTrace();
-                                               }
+            @Override
+            public void onResponse(Call call, okhttp3.Response response) throws IOException {
+                progressDialog.dismiss();
+                String res = Objects.requireNonNull(response.body()).string();
+                Log.e("res", res);
 
-                                           }
-                                       },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_LONG).show();
-                        progressDialog.dismiss();
+                try {
+                    JSONObject object = new JSONObject(res);
+                    final String message = object.optString("message");
+                    String status = object.optString("status");
+                    String data = object.optString("data");
+                    if(status.equals("1")) {
+                        JSONArray array = new JSONArray(data);
+                        Log.e("response", array.toString());
 
+                        if(array.length()!=0) {
+                            for (int i = 0; i < array.length(); i++) {
+                                JSONObject o = array.getJSONObject(i);
+                                ListItem item = new ListItem(o.getString("book_title"), o.getString("book_desc"), o.getString("book_content"), o.getString("book_author"), o.getString("book_cover"), o.getString("book_id"), o.getString("book_amount"));
+                                listitems.add(item);
+                            }
+
+                            getActivity().runOnUiThread(new Thread() {
+                                @Override
+                                public void run() {
+                                    recycleradapter = new RecyclerAdapter(listitems, getContext(), 1);
+                                    recyclerView.setAdapter(recycleradapter);
+
+                                }
+                            });
+                        }else{
+                            getActivity().runOnUiThread(new Thread() {
+                                                            @Override
+                                                            public void run() {
+                            LInearLayout_NoContentYet.setVisibility(View.VISIBLE);
+                                                            }
+                            });
+                        }
                     }
-                },getContext());
+                    //Log.e("Msg", array.toString());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, getContext());
+
     }
 
 }

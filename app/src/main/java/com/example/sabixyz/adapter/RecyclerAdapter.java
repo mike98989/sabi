@@ -5,8 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -17,17 +15,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.sabixyz.BookDetailsFragment;
-import com.example.sabixyz.BookReaderFragment;
 import com.example.sabixyz.BookReadyActivity;
-import com.example.sabixyz.Login;
-import com.example.sabixyz.MainActivity;
+import com.example.sabixyz.OpenBookActivity;
 import com.example.sabixyz.R;
 import com.example.sabixyz.model.ListItem;
 import com.squareup.picasso.Picasso;
 
-import java.lang.reflect.Constructor;
 import java.util.List;
-import java.util.Objects;
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
 
@@ -136,7 +130,8 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
             b.putString("list", list.toString());
             AppCompatActivity activity = (AppCompatActivity) view.getContext();
 
-            Intent i = new Intent(activity, BookReadyActivity.class);
+            //Intent i = new Intent(activity, BookReadyActivity.class);
+            Intent i = new Intent(activity, OpenBookActivity.class);
             i.putExtra("imageurl", list.getImageUrl());
             i.putExtra("content", list.getContent());
             i.putExtra("desc", list.getDescription());

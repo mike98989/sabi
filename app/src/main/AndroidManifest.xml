@@ -17,7 +17,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/TitleBaseTheme">
-        <activity android:name=".BookReadyActivity"></activity>
+        <activity android:name=".OpenBookActivity"></activity>
+        <activity android:name=".BookReadyActivity" />
 
         <meta-data
             android:name="co.paystack.android.PublicKey"

@@ -73,7 +73,6 @@ private SharedPreferences userInfoPreference;
                 Fragment myFragment = new PaymentPaystackFragment();
                 myFragment.setArguments(b);
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, myFragment).addToBackStack(null).commit();
-
                 break;
         }
     }

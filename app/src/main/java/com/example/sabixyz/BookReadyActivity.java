@@ -19,6 +19,8 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.sabixyz.effects.HorizontalFlip;
+import com.example.sabixyz.effects.TabletPageTransformer;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -26,14 +28,14 @@ import java.util.List;
 
 import static android.text.Layout.JUSTIFICATION_MODE_INTER_WORD;
 
-public class BookReadyActivity extends AppCompatActivity {
+public class BookReadyActivity extends AppCompatActivity implements View.OnClickListener {
     String[] pageData;
     String[] DataContent;
     ArrayList<String> content_data = new ArrayList<String>();
     String content, description, imageurl;
     LayoutInflater inflater;
     TextView book_text_content, pageCounter;
-    ImageView coverImage, mNightMode;
+    ImageView coverImage, mNightMode, mIncreaseFont, mDecreaseFont;
     LinearLayout mControls, mPagerContainer;
     SeekBar bookseekpages;
     ViewPager vp;
@@ -69,29 +71,20 @@ public class BookReadyActivity extends AppCompatActivity {
         mControls = findViewById(R.id.linearlayout_controls);
         pageCounter = findViewById(R.id.tv_page_counter);
         mNightMode = findViewById(R.id.img_night_mode);
+        mIncreaseFont = findViewById(R.id.img_font_increase);
+        mDecreaseFont = findViewById(R.id.img_font_decrease);
+        mIncreaseFont.setOnClickListener(this);
+        mDecreaseFont.setOnClickListener(this);
+        mNightMode.setOnClickListener(this);
         mPagerContainer = findViewById(R.id.linearlayout_viewpager_container);
 
         bookseekpages = findViewById(R.id.bookseekpages);
         bookseekpages.setMax( (DataContent.length - 0) / 1 );
-        myBookPagerAdapter adapter = new myBookPagerAdapter(getBaseContext(), "#000000");
+        myBookPagerAdapter adapter = new myBookPagerAdapter(getBaseContext(), "#000000", "");
         vp.setAdapter(adapter);
-
+        vp.setPageTransformer(true, new TabletPageTransformer());
 
         NightMode_ = 0;
-        mNightMode.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(NightMode_==0){
-                    setNightMode("#ffffff", "#000000");
-                    NightMode_=1;
-                }else{
-                    setNightMode("#000000", "#ffffff");
-                    NightMode_=0;
-                }
-
-            }
-        });
-
         bookseekpages.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -114,27 +107,55 @@ public class BookReadyActivity extends AppCompatActivity {
     private void setNightMode(String textColor, String BackgroundColor) {
         book_text_content = getNewTv();
         int currentItem= vp.getCurrentItem();
-        //book_text_content.setTextColor(getResources().getColor(R.color.white));
-        //new myBookPagerAdapter(getBaseContext(), "#ffffff");
-        vp.setAdapter(new myBookPagerAdapter(getBaseContext(), textColor));
+        vp.setAdapter(new myBookPagerAdapter(getBaseContext(), textColor, ""));
         vp.setCurrentItem(currentItem);
         mPagerContainer.setBackgroundColor(Color.parseColor(BackgroundColor));
     }
 
 
     private TextView getNewTv() {
-        //LayoutInflater inflater = (LayoutInflater) getApplication().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         page = inflater.inflate(R.layout.book_reader_layout, null);
         TextView content = page.findViewById(R.id.text_content);
         return content;
-
     }
 
-        private class myBookPagerAdapter extends PagerAdapter implements View.OnClickListener {
-        private String color;
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.img_night_mode:
+                if(NightMode_==0){
+                    setNightMode("#ffffff", "#000000");
+                    NightMode_=1;
+                }else{
+                    setNightMode("#000000", "#ffffff");
+                    NightMode_=0;
+                }
+                break;
+            case R.id.img_font_increase:
+                Log.e("increasefont", "increased");
+                int currentItem= vp.getCurrentItem();
+                //int currentScroll = vp.getScrollY();
+                vp.setAdapter(new myBookPagerAdapter(getBaseContext(), "", "+"));
+                vp.setCurrentItem(currentItem);
 
-        public myBookPagerAdapter(Context context, String settings_colour){
-            this.color=settings_colour;
+                //vp.scrollTo(0, currentScroll);
+                //vp.getChildAt(vp.getCurrentItem()).setScrollY(100);
+
+                break;
+        }
+    }
+
+    private class myBookPagerAdapter extends PagerAdapter implements View.OnClickListener {
+        private String color="#000000";
+        private String operator="";
+
+        public myBookPagerAdapter(Context context, String settings_colour, String operation){
+            if(!settings_colour.equals("")) {
+                this.color = settings_colour;
+            }
+            if(!operation.equals("")) {
+                this.operator = operation;
+            }
         }
 
         @Override
@@ -148,7 +169,7 @@ public class BookReadyActivity extends AppCompatActivity {
         @Override
         public Object instantiateItem(ViewGroup container, int position) {
             //page = inflater.inflate(R.layout.book_reader_layout, null);
-            int settings_color = Color.parseColor(color);
+
             book_text_content = getNewTv();
             //book_text_content = page.findViewById(R.id.text_content);
             book_text_content.setOnClickListener(this);
@@ -174,11 +195,26 @@ public class BookReadyActivity extends AppCompatActivity {
 
             }
             //bookseekpages.setProgress(position);
-            book_text_content.setTextColor(settings_color);
+
+            if(operator.equals("+")){
+                int newSize = (int) book_text_content.getTextSize()+1;
+                book_text_content.setTextSize(newSize);
+            }else if(operator.equals("-")){
+                int newSize = (int) book_text_content.getTextSize()-1;
+                book_text_content.setTextSize(newSize);
+            }
+
+            if(!this.color.equals("")) {
+                int settings_color = Color.parseColor(color);
+                book_text_content.setTextColor(settings_color);
+            }
+
             pageCounter.setText(position+"/"+getCount());
+
 
             //Add the page to the front of the queue
             ((ViewPager) container).addView(page, 0);
+            //container.setScroll
             return page;
         }
 

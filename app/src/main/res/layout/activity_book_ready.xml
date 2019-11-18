@@ -28,7 +28,7 @@
         android:background="#F1F1F1"
         android:elevation="10dp"
         android:orientation="vertical"
-        android:visibility="gone"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="@+id/linearlayout_viewpager_container"
         app:layout_constraintTop_toTopOf="@+id/linearlayout_viewpager_container"
         app:layout_constraintVertical_bias="1.0"
@@ -67,7 +67,23 @@
                 android:layout_width="30dp"
                 android:clickable="true"
                 android:layout_height="30dp"
+                android:layout_marginRight="10dp"
                 android:src="@drawable/ic_night_mode"/>
+
+            <ImageView
+                android:id="@+id/img_font_increase"
+                android:layout_width="30dp"
+                android:clickable="true"
+                android:layout_height="30dp"
+                android:layout_marginRight="20dp"
+                android:src="@drawable/ic_a_plus"/>
+
+            <ImageView
+                android:id="@+id/img_font_decrease"
+                android:layout_width="30dp"
+                android:clickable="true"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_a_minus"/>
         </LinearLayout>
 
 

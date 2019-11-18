@@ -3,10 +3,12 @@ package com.example.sabixyz;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Build;
-import android.support.annotation.NonNull;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.annotation.NonNull;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
@@ -24,6 +26,7 @@ import android.widget.TextView;
 import com.example.sabixyz.effects.HorizontalFlip;
 import com.example.sabixyz.effects.RotateDown;
 import com.example.sabixyz.effects.TabletPageTransformer;
+import com.folioreader.FolioReader;
 import com.squareup.picasso.Picasso;
 
 import org.w3c.dom.Text;
@@ -53,12 +56,16 @@ private LayoutInflater inflater;
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN|View.SYSTEM_UI_FLAG_HIDE_NAVIGATION|View.SYSTEM_UI_FLAG_IMMERSIVE|View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_open_book);
+        FolioReader folioReader = FolioReader.get();
+        folioReader.openBook("file:///asset/epub2.epub");
 
         //page = inflater.inflate(R.layout.book_reader_layout, null);
         //parent = inflater.inflate(R.layout.activity_open_book, null);
         //tv_book_content_parent = findViewById(R.id.text_content);
 
         //coverImage = page.findViewById(R.id.imgview_book_cover);
+
+        /*
         inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         content = getIntent().getStringExtra("content");
         description = getIntent().getStringExtra("desc");
@@ -110,6 +117,8 @@ private LayoutInflater inflater;
 
             }
         });
+
+        */
 
     }
 

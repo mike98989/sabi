@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="Gradle: co.paystack.android.design.widget:pinpad:1.0.1@aar">
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/8dcf359a5becd83700bea99597ca8a31/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/8dcf359a5becd83700bea99597ca8a31/jars/classes.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/64d87d38d3271ff9b5821f3b06316635/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/64d87d38d3271ff9b5821f3b06316635/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

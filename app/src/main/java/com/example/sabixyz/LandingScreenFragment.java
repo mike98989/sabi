@@ -4,13 +4,11 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
+
+import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +23,7 @@ import com.example.sabixyz.model.ListItem;
 import com.example.sabixyz.tabs.index1Fragment;
 import com.example.sabixyz.tabs.index2Fragment;
 import com.example.sabixyz.tabs.index3Fragment;
+import com.google.android.material.tabs.TabLayout;
 import com.google.gson.JsonObject;
 
 import org.json.JSONArray;

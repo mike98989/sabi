@@ -1,8 +1,9 @@
 package com.example.sabixyz.effects;
 
 
-import android.support.v4.view.ViewPager;
 import android.view.View;
+
+import androidx.viewpager.widget.ViewPager;
 
 public class RotateDown implements ViewPager.PageTransformer {
     private static final float ROTATION = -15f;

@@ -1,16 +1,18 @@
 package com.example.sabixyz;
 
 import android.os.Bundle;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
+
 import com.example.sabixyz.adapter.TabAdapter;
 import com.example.sabixyz.tabs.TabMyBooksFragment;
 import com.example.sabixyz.tabs.TabSavedBooksFragment;
+import com.google.android.material.tabs.TabLayout;
 
 public class MyBooksFragment extends Fragment {
     private TabAdapter tabadapter;

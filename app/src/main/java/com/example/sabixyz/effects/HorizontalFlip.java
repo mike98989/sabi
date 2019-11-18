@@ -1,7 +1,9 @@
 package com.example.sabixyz.effects;
 
-import android.support.v4.view.ViewPager;
+
 import android.view.View;
+
+import androidx.viewpager.widget.ViewPager;
 
 public class HorizontalFlip implements ViewPager.PageTransformer {
     @Override

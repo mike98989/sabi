@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/book1_bg"
+    android:background="@drawable/book2_bg"
     android:backgroundTint="@color/black"
     android:backgroundTintMode="add"
     android:padding="50dp"
@@ -76,6 +76,7 @@
             android:textColorHint="@color/sabiOrange" />
 
     </LinearLayout>
+
     <EditText
         android:id="@+id/edt_username"
         android:background="@drawable/black_opaque_bg_grey_border"

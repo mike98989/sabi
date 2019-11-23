@@ -1,6 +1,7 @@
 package com.example.sabixyz;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
@@ -13,12 +14,18 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.sabixyz.helper.Requests;
+import com.folioreader.util.ProgressDialog;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.IOException;
 import java.lang.reflect.Array;
@@ -36,11 +43,12 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
+import static android.content.Context.MODE_PRIVATE;
 import static java.lang.Integer.parseInt;
 
 public class PaymentPaystackFragment extends Fragment implements View.OnClickListener {
-private TextView mAmountToPay;
-private String strAmountToPay;
+private TextView mAmountToPay, mBookTitle, mReturnMsg;
+private String strAmountToPay, strBookTitle, user_email, strBookID;
 private EditText mCardNumber, mExpiryDate, mCvc;
 private Button mPayButon;
 public static ArrayList<String> listOfPattern;
@@ -49,12 +57,18 @@ private static final char slash = '/';
 private boolean buttonisactive = false;
 private Charge charge;
 private Card card;
-private String user_email;
+private android.app.ProgressDialog pDialog;
+private SharedPreferences userInfoPreference;
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.btn_paynow:
+                mReturnMsg.setVisibility(View.GONE);
+                pDialog = new android.app.ProgressDialog(getContext());
+                pDialog.setMessage("Authenticating...");
+                pDialog.setCancelable(false);
+                pDialog.show();
                 //if(buttonisactive) {
                     initiateCard();
                 //}
@@ -109,6 +123,7 @@ private String user_email;
         PaystackSdk.chargeCard(getActivity(), charge, new Paystack.TransactionCallback() {
             @Override
             public void onSuccess(Transaction transaction) {
+                pDialog.dismiss();
                 // This is called only after transaction is deemed successful.
                 // Retrieve the transaction, and send its reference to your server
                 // for verification.
@@ -118,6 +133,9 @@ private String user_email;
 
                 Map<String, Object> map = new HashMap<>();
                 map.put("reference", paymentReference);
+                map.put("bookId", strBookID);
+                map.put("token", userInfoPreference.getString(getString(R.string.user_token), ""));
+
 
                 Requests.verifyTransaction(map, new Callback() {
                     @Override
@@ -130,24 +148,41 @@ private String user_email;
                         String res = Objects.requireNonNull(response.body()).string();
                         Log.e("msg", res);
 
-                        Bundle b = new Bundle();
-                        b.putString("reference", paymentReference);
-                        PaymentConfirmationFragment fragment = new PaymentConfirmationFragment();
-                        fragment.setArguments(b);
-                        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                        fragmentManager.beginTransaction().replace(R.id.fragment_container, fragment).addToBackStack("paymentcard").commit();
+                        try {
+                            JSONObject jObject =  new JSONObject(res);
+                            String strStatus = jObject.optString("status");
+                            String strData = jObject.optString("data");
+                            Boolean status = Boolean.valueOf(strStatus);
+                            Log.e("status", status+"");
+                            if(status){
+                                JSONArray array = new JSONArray(strData);
+                                JSONObject jsonObject = array.getJSONObject(0);
+
+                                Bundle b = new Bundle();
+                                b.putString("reference", paymentReference);
+                                PaymentConfirmationFragment fragment = new PaymentConfirmationFragment();
+                                fragment.setArguments(b);
+                                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                                fragmentManager.beginTransaction().replace(R.id.fragment_container, fragment).addToBackStack("paymentcard").commit();
+
+                            }else{
+                                //Toast.makeText(getContext(), "Transaction was NOT Successful! payment reference:"+ paymentReference, Toast.LENGTH_LONG).show();
+                                Log.e("Transaction", "Transaction was NOT Successful! payment reference: "+paymentReference);
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
 
                     }
                 },getContext());
 
-                Toast.makeText(getContext(), "Transaction Successful! payment reference: "
-                        + paymentReference, Toast.LENGTH_LONG).show();
-                Log.e("Transaction", "Transaction Successful! payment reference: "+paymentReference);
+
             }
 
             @Override
             public void beforeValidate(Transaction transaction) {
-
+                pDialog.dismiss();
                 Log.e("BeforeTransaction", "Before Transaction: "+transaction.getReference());
                 // This is called only before requesting OTP.
                 // Save reference so you may send to server. If
@@ -156,7 +191,9 @@ private String user_email;
 
             @Override
             public void onError(Throwable error, Transaction transaction) {
-                //handle error here
+                pDialog.dismiss();
+                mReturnMsg.setText("Transaction was not successful! "+error.getMessage());
+                mReturnMsg.setVisibility(View.VISIBLE);
                 Log.e("ErrorOnTransaction", "Transaction was not: "+error+"@"+transaction.getReference());
             }
         });
@@ -165,9 +202,11 @@ private String user_email;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE | WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
         Bootstrap.setPaystackKey("pk_test_3f96c9313eb9fd480d99bbc3231114b6ceb3534b");
         PaystackSdk.initialize(getActivity().getApplicationContext());
         user_email = getArguments().getString("email");
+        userInfoPreference = getActivity().getSharedPreferences(getString(R.string.user_sharePreference_Key), MODE_PRIVATE);
     }
 
     @Override
@@ -204,12 +243,17 @@ private String user_email;
         View view =  inflater.inflate(R.layout.fragment_payment_paystack, container, false);
         if (getArguments() != null) {
             strAmountToPay = getArguments().getString("amount");
+            strBookTitle = getArguments().getString("title");
+            strBookID = getArguments().getString("bookId");
         }
 
 
         mAmountToPay = view.findViewById(R.id.tv_amount_to_pay);
+        mBookTitle = view.findViewById(R.id.tv_book_title);
+        mReturnMsg = view.findViewById(R.id.tv_return_msg);
         mExpiryDate = view.findViewById(R.id.edt_expirydate);
         mAmountToPay.setText(getString(R.string.currency)+strAmountToPay);
+        mBookTitle.setText(strBookTitle);
         mCardNumber = view.findViewById(R.id.edt_card_number);
         mPayButon = view.findViewById(R.id.btn_paynow);
         mCvc = view.findViewById(R.id.edt_cvc);

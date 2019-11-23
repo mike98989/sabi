@@ -65,6 +65,7 @@ private SharedPreferences userInfoPreference;
 
                 Bundle b = new Bundle();
                 b.putString("title", getArguments().getString("title"));
+                b.putString("bookId", getArguments().getString("id"));
                 b.putString("amount", getArguments().getString("amount"));
                 b.putString("email", userInfoPreference.getString(getString(R.string.user_email), ""));
 

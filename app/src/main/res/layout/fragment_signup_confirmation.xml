@@ -207,8 +207,6 @@
                 android:clickable="true"
                 android:textStyle="bold"
                 />
-
-
         </LinearLayout>
 
 
@@ -218,7 +216,7 @@
         android:layout_width="match_parent"
         android:orientation="vertical"
         android:visibility="gone"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:id="@+id/linearlayout_user_confirm_form_success">
 
         <TextView

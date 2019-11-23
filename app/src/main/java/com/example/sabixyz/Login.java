@@ -127,13 +127,12 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                             }
                         });
                     }else{
-                        Log.e("datadd", strData);
+
                         JSONArray array = new JSONArray(strData);
                         JSONObject jsonObject = array.getJSONObject(0);
 
                         sharedPreferences = getSharedPreferences(getString(R.string.user_sharePreference_Key), MODE_PRIVATE);
                         Editor editor = sharedPreferences.edit();
-
                         editor.putString(getString(R.string.user_email),jsonObject.getString("email"));
                         editor.putString(getString(R.string.user_phone),jsonObject.getString("phone"));
                         editor.putString(getString(R.string.last_name),jsonObject.getString("last_name"));

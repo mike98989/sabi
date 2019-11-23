@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.core.widget.NestedScrollView  xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+<RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/sabiOrange"
@@ -184,6 +188,103 @@
             android:textStyle="bold"
             />
 
+
+    <LinearLayout
+        style="@style/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal"
+        android:paddingLeft="10dp"
+        android:paddingTop="5dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:paddingBottom="5dp">
+
+        <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/radio_im_a_student"
+            android:checked="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="I am a Student"/>
+
+        <RadioButton
+            android:id="@+id/radio_im_not_a_student"
+            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="I am NOT a Student"/>
+        </RadioGroup>
+
+    </LinearLayout>
+
+        <LinearLayout
+            style="@style/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp">
+
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_bold_1"
+                android:paddingTop="4dp"
+                android:text="@string/signup_user_fname"
+                android:textColor="@color/black" />
+
+            <EditText
+                android:id="@+id/edt_user_fname"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_alignParentEnd="true"
+                android:layout_gravity="right"
+                android:background="@color/transparent"
+                android:hint="@string/user_fname"
+                android:inputType="text"
+                android:textColorHint="@color/sabiGrey" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp">
+
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_bold_1"
+                android:paddingTop="4dp"
+                android:text="@string/signup_user_lname"
+                android:textColor="@color/black" />
+
+            <EditText
+                android:id="@+id/edt_user_lname"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_alignParentEnd="true"
+                android:layout_gravity="right"
+                android:background="@color/transparent"
+                android:hint="@string/user_lname"
+                android:inputType="text"
+                android:textColorHint="@color/sabiGrey" />
+
+        </LinearLayout>
+
         <LinearLayout
             style="@style/textView"
             android:layout_width="match_parent"
@@ -206,15 +307,14 @@
                 android:id="@+id/edt_user_phone"
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
-                android:layout_gravity="right"
                 android:layout_alignParentEnd="true"
+                android:layout_gravity="right"
                 android:background="@color/transparent"
                 android:hint="@string/user_phone"
                 android:inputType="phone"
                 android:textColorHint="@color/sabiGrey" />
 
         </LinearLayout>
-
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -244,6 +344,109 @@
                 android:layout_alignParentEnd="true"
                 android:textColorHint="@color/sabiGrey"
                 android:background="@color/transparent"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linear_layout_student_fields"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <LinearLayout
+            android:id="@+id/linearlayout_signup_school"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="10dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            style="@style/textView">
+
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_bold_1"
+                android:paddingTop="4dp"
+                android:textColor="@color/black"
+                android:text="@string/signup_school"/>
+
+            <EditText
+                android:layout_gravity="right"
+                android:id="@+id/edt_school"
+                android:inputType="textEmailAddress"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:hint="@string/signup_school"
+                android:layout_alignParentEnd="true"
+                android:textColorHint="@color/sabiGrey"
+                android:background="@color/transparent"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearlayout_signup_faculty"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="10dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            style="@style/textView">
+
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_bold_1"
+                android:paddingTop="4dp"
+                android:textColor="@color/black"
+                android:text="@string/signup_faculty"/>
+
+            <EditText
+                android:layout_gravity="right"
+                android:id="@+id/edt_faculty"
+                android:inputType="textEmailAddress"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:hint="@string/signup_faculty"
+                android:layout_alignParentEnd="true"
+                android:textColorHint="@color/sabiGrey"
+                android:background="@color/transparent"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearlayout_signup_department"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="10dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            style="@style/textView">
+
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_bold_1"
+                android:paddingTop="4dp"
+                android:textColor="@color/black"
+                android:text="@string/signup_department"/>
+
+            <EditText
+                android:layout_gravity="right"
+                android:id="@+id/edt_department"
+                android:inputType="textEmailAddress"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:hint="@string/signup_department"
+                android:layout_alignParentEnd="true"
+                android:textColorHint="@color/sabiGrey"
+                android:background="@color/transparent"/>
+
+        </LinearLayout>
 
         </LinearLayout>
 
@@ -361,3 +564,4 @@
 
     </LinearLayout>
 </RelativeLayout>
+</androidx.core.widget.NestedScrollView>

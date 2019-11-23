@@ -55,7 +55,7 @@
 
 
         <Button
-            android:id="@+id/btn_confirm_user_code_submit_successful"
+            android:id="@+id/btn_goto_my_books"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/rounded_orange_btn_no_border"

@@ -80,8 +80,12 @@ public class Requests {
     }
 
 
-    public static void verifyTransaction(Map<String, Object> params, Callback callback, Context context) {
-        performRequest(makeSubmitRequest_noHeader(String.format("%s/verifyTransaction", BASE_URL), params), callback, context);
+    public static void beforeValidateTransaction(Map<String, Object> params, Callback callback, Context context) {
+        performRequest(makeSubmitRequest_noHeader(String.format("%s/beforeValidateTransaction", BASE_URL), params), callback, context);
+    }
+
+    public static void validateTransaction(Map<String, Object> params, Callback callback, Context context) {
+        performRequest(makeSubmitRequest_noHeader(String.format("%s/validateTransaction", BASE_URL), params), callback, context);
     }
 
     public static void uploadImage(Map<String, Object> params, File filetoupload, String cookie, Callback callback, Context context) {

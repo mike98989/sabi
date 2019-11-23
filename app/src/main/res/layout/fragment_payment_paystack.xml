@@ -161,6 +161,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:paddingLeft="5dp"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
             android:orientation="horizontal">
 
             <EditText
@@ -173,6 +176,7 @@
                 android:paddingTop="5dp"
                 android:paddingBottom="5dp"
                 android:hint="MM/YY"
+                android:elevation="2dp"
                 style="@style/textView"/>
 
 
@@ -187,6 +191,7 @@
                 android:paddingTop="5dp"
                 android:paddingBottom="5dp"
                 android:hint="CVV"
+                android:elevation="2dp"
                 style="@style/textView"/>
 
         </LinearLayout>

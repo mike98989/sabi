@@ -133,6 +133,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 
                         sharedPreferences = getSharedPreferences(getString(R.string.user_sharePreference_Key), MODE_PRIVATE);
                         Editor editor = sharedPreferences.edit();
+                        editor.putString(getString(R.string.user_id),jsonObject.getString("id"));
                         editor.putString(getString(R.string.user_email),jsonObject.getString("email"));
                         editor.putString(getString(R.string.user_phone),jsonObject.getString("phone"));
                         editor.putString(getString(R.string.last_name),jsonObject.getString("last_name"));

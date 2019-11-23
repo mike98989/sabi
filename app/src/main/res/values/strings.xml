@@ -20,6 +20,7 @@
     <!--Shared Preference -->
     <string name="user_sharePreference_Key">sabi_user_pref_key</string>
     <string name="user_token">token</string>
+    <string name="user_id">0</string>
     <string name="user_email">johndoe@test.com</string>
     <string name="user_phone">+23470000000</string>
     <string name="user_fname">First Name</string>

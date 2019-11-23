@@ -90,6 +90,9 @@ private SharedPreferences userInfoPreference;
             performCharge();
             Log.e("validity", "Card is valid"+"@"+card.getType());
         } else {
+            pDialog.dismiss();
+            mReturnMsg.setText("Card is not valid ");
+            mReturnMsg.setVisibility(View.VISIBLE);
            Log.e("validity", "Card is not valid");
         }
 
@@ -129,15 +132,16 @@ private SharedPreferences userInfoPreference;
                 // for verification.
 
                 Log.e("TransactionDetails", transaction.toString());
-                final String paymentReference = transaction.getReference();
 
+                final String paymentReference = transaction.getReference();
                 Map<String, Object> map = new HashMap<>();
                 map.put("reference", paymentReference);
                 map.put("bookId", strBookID);
+                map.put("userId", userInfoPreference.getString(getString(R.string.user_id), ""));
                 map.put("token", userInfoPreference.getString(getString(R.string.user_token), ""));
 
 
-                Requests.verifyTransaction(map, new Callback() {
+                Requests.validateTransaction(map, new Callback() {
                     @Override
                     public void onFailure(Call call, IOException e) {
 
@@ -146,17 +150,14 @@ private SharedPreferences userInfoPreference;
                     @Override
                     public void onResponse(Call call, Response response) throws IOException {
                         String res = Objects.requireNonNull(response.body()).string();
-                        Log.e("msg", res);
+                        Log.e("verify", res);
 
                         try {
                             JSONObject jObject =  new JSONObject(res);
                             String strStatus = jObject.optString("status");
                             String strData = jObject.optString("data");
-                            Boolean status = Boolean.valueOf(strStatus);
-                            Log.e("status", status+"");
-                            if(status){
-                                JSONArray array = new JSONArray(strData);
-                                JSONObject jsonObject = array.getJSONObject(0);
+                            Log.e("status", strStatus+"");
+                            if(strStatus.equals("1")){
 
                                 Bundle b = new Bundle();
                                 b.putString("reference", paymentReference);
@@ -165,10 +166,8 @@ private SharedPreferences userInfoPreference;
                                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                                 fragmentManager.beginTransaction().replace(R.id.fragment_container, fragment).addToBackStack("paymentcard").commit();
 
-                            }else{
-                                //Toast.makeText(getContext(), "Transaction was NOT Successful! payment reference:"+ paymentReference, Toast.LENGTH_LONG).show();
-                                Log.e("Transaction", "Transaction was NOT Successful! payment reference: "+paymentReference);
                             }
+
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -184,9 +183,43 @@ private SharedPreferences userInfoPreference;
             public void beforeValidate(Transaction transaction) {
                 pDialog.dismiss();
                 Log.e("BeforeTransaction", "Before Transaction: "+transaction.getReference());
-                // This is called only before requesting OTP.
-                // Save reference so you may send to server. If
-                // error occurs with OTP, you should still verify on server.
+                final String paymentReference = transaction.getReference();
+
+                Map<String, Object> map = new HashMap<>();
+                map.put("reference", paymentReference);
+                map.put("bookId", strBookID);
+                map.put("userId", userInfoPreference.getString(getString(R.string.user_id), ""));
+                map.put("token", userInfoPreference.getString(getString(R.string.user_token), ""));
+
+
+                Requests.beforeValidateTransaction(map, new Callback() {
+                    @Override
+                    public void onFailure(Call call, IOException e) {
+
+                    }
+
+                    @Override
+                    public void onResponse(Call call, Response response) throws IOException {
+                        String res = Objects.requireNonNull(response.body()).string();
+                        Log.e("beforeverify", res);
+
+                        try {
+                            JSONObject jObject =  new JSONObject(res);
+                            String strStatus = jObject.optString("status");
+                            String strData = jObject.optString("data");
+
+                            Log.e("status", strStatus+"");
+                            if(!strStatus.equals("1")){
+                                return;
+                            }
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+
+                    }
+                },getContext());
             }
 
             @Override

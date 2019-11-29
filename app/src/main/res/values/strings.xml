@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">sabi.xyz</string>
-    <string name="localpath">http://172.20.10.3/sabi/</string>
+    <!--<string name="localpath">http://172.20.10.3/sabi/</string>-->
+    <string name="localpath">http://sabi.xyz/</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>

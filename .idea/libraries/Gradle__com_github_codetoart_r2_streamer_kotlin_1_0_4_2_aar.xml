@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.codetoart:r2-streamer-kotlin:1.0.4-2@aar">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/ae052b91772926dc94bd0919ab91c744/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/ae052b91772926dc94bd0919ab91c744/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.codetoart/r2-streamer-kotlin/1.0.4-2/6f7e24e555fd4972a51eaa38902fafa8de08e233/r2-streamer-kotlin-1.0.4-2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="10dp"
+    tools:context=".PaymentConfirmationFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:visibility="visible"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:id="@+id/linearlayout_user_confirm_form_success">
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/ic_ok2"/>
+        <TextView
+            android:id="@+id/signup_success_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:fontFamily="@font/poppins_bold_1"
+            android:text="Payment Successful"
+            android:layout_marginBottom="20dp"
+            android:textColor="@color/black"
+            android:textSize="22dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.127"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.041" />
+
+        <TextView
+            android:id="@+id/tv_return_success_msg"
+            android:layout_below="@+id/signup_title"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/avenirnextltpro_regular"
+            android:textAlignment="center"
+            android:paddingBottom="5dp"
+            android:text="Success Message"
+            android:textColor="@color/black"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            />
+
+
+        <Button
+            android:id="@+id/btn_goto_my_books"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_orange_btn_no_border"
+            android:textColor="@color/white"
+            android:layout_marginTop="20dp"
+            android:text="Goto MyBooks"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:textAllCaps="false"/>
+
+    </LinearLayout>
+
+</FrameLayout>

@@ -15,7 +15,7 @@
     tools:context=".Login">
 
 
-    <ImageViewm
+    <ImageView
         android:id="@+id/img_sabi_logo"
         android:layout_width="100dp"
         android:layout_height="100dp"

@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<androidx.core.widget.NestedScrollView  xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-<RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/sabiOrange"
@@ -13,6 +10,12 @@
     android:id="@+id/fragment_container"
     tools:context=".SignupActivity">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <ImageView
         android:id="@+id/logo"
         android:layout_width="112dp"
@@ -563,5 +566,6 @@
         </LinearLayout>
 
     </LinearLayout>
+    </RelativeLayout>
+    </ScrollView>
 </RelativeLayout>
-</androidx.core.widget.NestedScrollView>

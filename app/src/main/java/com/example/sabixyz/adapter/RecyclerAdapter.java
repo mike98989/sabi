@@ -137,6 +137,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
             i.putExtra("imageurl", list.getImageUrl());
             i.putExtra("content", list.getContent());
             i.putExtra("desc", list.getDescription());
+            i.putExtra("filepath", list.getFilePath());
             activity.startActivity(i);
 
             /*

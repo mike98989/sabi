@@ -140,7 +140,6 @@ private SharedPreferences userInfoPreference;
                 map.put("userId", userInfoPreference.getString(getString(R.string.user_id), ""));
                 map.put("token", userInfoPreference.getString(getString(R.string.user_token), ""));
 
-
                 Requests.validateTransaction(map, new Callback() {
                     @Override
                     public void onFailure(Call call, IOException e) {

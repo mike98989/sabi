@@ -82,7 +82,7 @@ public class TabSavedBooksFragment extends Fragment {
 
                             for (int i=0; i<array.length(); i++){
                                 JSONObject o = array.getJSONObject(i);
-                                ListItem item = new ListItem(o.getString("book_title"),  o.getString("book_desc"),o.getString("book_content"),o.getString("book_author"),o.getString("book_cover"), o.getString("book_id"), o.getString("book_amount"));
+                                ListItem item = new ListItem(o.getString("book_title"),  o.getString("book_desc"),o.getString("book_content"),o.getString("book_author"),o.getString("book_cover"), o.getString("book_id"), o.getString("book_amount"),"");
                                 listitems.add(item);
                             }
                             recycleradapter = new RecyclerAdapter(listitems, getContext(), 1);

@@ -31,6 +31,7 @@ public class BookReaderFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+
         View view =  inflater.inflate(R.layout.fragment_book_reader, container, false);
         PDFView pdfView = view.findViewById(R.id.book_pdfView);
         pdfView.fromAsset("CEHv8_Module_19_Cryptography.pdf")

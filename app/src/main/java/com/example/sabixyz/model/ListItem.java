@@ -8,8 +8,9 @@ public class ListItem {
     private String id;
     private String author;
     private String amount;
+    private String filepath;
 
-    public ListItem(String head, String description,String content, String author, String imageUrl, String Id, String amount) {
+    public ListItem(String head, String description,String content, String author, String imageUrl, String Id, String amount, String file_path) {
         this.head = head;
         this.description = description;
         this.content = content;
@@ -17,6 +18,7 @@ public class ListItem {
         this.ImageUrl = imageUrl;
         this.id = Id;
         this.amount = amount;
+        this.filepath = file_path;
     }
 
     public String getHead() {
@@ -36,4 +38,5 @@ public class ListItem {
     }
     public String getAuthor(){return author; }
     public String getAmount(){return amount; }
+    public String getFilePath(){return filepath;}
 }

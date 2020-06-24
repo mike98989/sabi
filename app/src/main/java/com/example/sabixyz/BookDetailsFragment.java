@@ -51,7 +51,7 @@ private SharedPreferences userInfoPreference;
             mTitle.setText(Title);
             //Log.e("desc", getArguments().getString("description"));
             mDescription.setText(getArguments().getString("description").replaceAll("\\n","\n"));
-            Picasso.get().load(Constants.LOCAL_PATH+getArguments().getString("imageurl")).into(mImageView);
+            Picasso.get().load(Sabi_Constants.LOCAL_PATH+getArguments().getString("imageurl")).into(mImageView);
             mBuyBookButton.setText("Buy Book "+getString(R.string.currency)+getArguments().getString("amount"));
             //Log.e("Title", Title);
         }

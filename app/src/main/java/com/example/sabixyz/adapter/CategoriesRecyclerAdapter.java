@@ -14,7 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.sabixyz.Constants;
+import com.example.sabixyz.Sabi_Constants;
 import com.example.sabixyz.MainActivity;
 import com.example.sabixyz.R;
 import com.example.sabixyz.model.CategoriesList;
@@ -51,8 +51,8 @@ public class CategoriesRecyclerAdapter extends RecyclerView.Adapter<CategoriesRe
         holder.textViewShortDesc.setText(listItem.getShortDescription());
         holder.CategoryID = listItem.getId();
         holder.list = listItem;
-        Log.e("allurl", Constants.LOCAL_PATH+listItem.getImageUrl());
-        Picasso.get().load(Constants.LOCAL_PATH +listItem.getImageUrl()).into(holder.imageView);
+        Log.e("allurl", Sabi_Constants.LOCAL_PATH+listItem.getImageUrl());
+        Picasso.get().load(Sabi_Constants.LOCAL_PATH +listItem.getImageUrl()).into(holder.imageView);
     }
 
     @Override

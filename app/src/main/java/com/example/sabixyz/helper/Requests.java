@@ -12,7 +12,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.sabixyz.Constants;
+import com.example.sabixyz.Sabi_Constants;
 import com.google.gson.Gson;
 
 
@@ -33,7 +33,7 @@ import okhttp3.RequestBody;
 public class Requests {
     //    private static final MediaType JSON = MediaType.parse("application/json");
 
-    private static final String BASE_URL = Constants.LOCAL_PATH+"api";
+    private static final String BASE_URL = Sabi_Constants.LOCAL_PATH+"api";
     private static MediaType JSON = MediaType.parse("application/json; charset=utf-8");
     public static final CookieStore cookieStore = new CookieStore();
 

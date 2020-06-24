@@ -1,48 +1,35 @@
 package com.example.sabixyz;
 
-import android.app.DownloadManager;
 import android.app.ProgressDialog;
-import android.content.Context;
-import android.content.res.AssetManager;
-import android.graphics.Color;
-import android.net.Uri;
-import android.os.Build;
 
-import androidx.annotation.NonNull;
-import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.text.Html;
 import android.util.Log;
 import android.util.SparseArray;
-import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewParent;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.sabixyz.effects.HorizontalFlip;
-import com.example.sabixyz.effects.RotateDown;
-import com.example.sabixyz.effects.TabletPageTransformer;
+import com.downloader.Error;
+import com.downloader.OnCancelListener;
+import com.downloader.OnDownloadListener;
+import com.downloader.OnPauseListener;
+import com.downloader.OnProgressListener;
+import com.downloader.OnStartOrResumeListener;
+import com.downloader.PRDownloader;
+import com.downloader.PRDownloaderConfig;
+import com.downloader.Progress;
 import com.folioreader.Config;
 import com.folioreader.Constants;
 import com.folioreader.FolioReader;
-import com.folioreader.model.locators.ReadLocator;
-import com.folioreader.util.ReadLocatorListener;
-import com.squareup.picasso.Picasso;
 
-import org.w3c.dom.Text;
-
+import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
-
-import static android.text.Layout.JUSTIFICATION_MODE_INTER_WORD;
 
 public class OpenBookActivity extends AppCompatActivity implements FolioReader.OnClosedListener {
 private String content, description, imageurl;
@@ -60,23 +47,29 @@ private LayoutInflater inflater;
     //String color="#ffffff";
     String color="#000000";
     String BackgroundColor = "#ffffff";
-    String filePath;
+    String filePath,fileTitle;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        final ProgressDialog pdialog = new ProgressDialog(OpenBookActivity.this);
+        pdialog.setMessage("Loading Content... Please wait");
+        pdialog.setCancelable(false);
+        pdialog.show();
+
+        PRDownloader.initialize(getApplicationContext());
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         filePath = getIntent().getStringExtra("filepath");
+        fileTitle = getIntent().getStringExtra("title").replace(" ","_").toLowerCase();
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN|View.SYSTEM_UI_FLAG_HIDE_NAVIGATION|View.SYSTEM_UI_FLAG_IMMERSIVE|View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_open_book);
         try {
             Boolean checkfile = checkIfExist(filePath);
-            Log.e("checkfile", ""+checkfile);
             if(checkfile){
-                openReader(filePath);
+                openReader(filePath, pdialog);
             }else{
-                DownloadEpubFile(filePath);
+                DownloadEpubFile(filePath, pdialog);
             }
             
         } catch (IOException e) {
@@ -84,18 +77,61 @@ private LayoutInflater inflater;
         }
     }
 
-    private void DownloadEpubFile(String filePath) {
-        final android.app.ProgressDialog pdialog = new ProgressDialog(this);
-        pdialog.setMessage("Loading... Please wait.");
-        pdialog.setCancelable(true);
-        pdialog.show();
-        DownloadTask downLoadTask = new DownloadTask(this, filePath, pdialog);
-        DownloadManager downloadManager = (DownloadManager)getSystemService(DOWNLOAD_SERVICE);
-        DownloadManager.Request request = new DownloadManager.Request(Uri.parse(com.example.sabixyz.Constants.LOCAL_PATH+ com.example.sabixyz.Constants.EPUB_REPO+filePath));
-        long queueid = downloadManager.enqueue(request);
+    private void DownloadEpubFile(final String filePath, final ProgressDialog pdialog) {
+        String url = Sabi_Constants.LOCAL_PATH+Sabi_Constants.EPUB_REPO+filePath;
+        //String dirPath = "file:///android_asset/";
+        String dirPath = getBaseContext().getFilesDir().getAbsolutePath() + "/";
+        // Enabling database for resume support even after the application is killed:
+        PRDownloaderConfig config = PRDownloaderConfig.newBuilder()
+                .setDatabaseEnabled(true)
+                //.setReadTimeout(30_000)
+                //.setConnectTimeout(30_000)
+                .build();
+        PRDownloader.initialize(getApplicationContext(), config);
+
+        int downloadId = PRDownloader.download(url, dirPath, filePath)
+                .build()
+                .setOnStartOrResumeListener(new OnStartOrResumeListener() {
+                    @Override
+                    public void onStartOrResume() {
+
+                    }
+                })
+                .setOnPauseListener(new OnPauseListener() {
+                    @Override
+                    public void onPause() {
+
+                    }
+                })
+                .setOnCancelListener(new OnCancelListener() {
+                    @Override
+                    public void onCancel() {
+
+                    }
+                })
+                .setOnProgressListener(new OnProgressListener() {
+                    @Override
+                    public void onProgress(Progress progress) {
+                        Log.e("Progress", progress.toString());
+                    }
+                })
+                .start(new OnDownloadListener() {
+                    @Override
+                    public void onDownloadComplete() {
+                        Log.e("Completed", "file completed");
+                        openReader(filePath, pdialog);
+                    }
+                    @Override
+                    public void onError(Error error) {
+                        Log.e("Error", error.isConnectionError()+"");
+                    }
+                });
+
+        Log.e("DownloadId", downloadId+"");
+
     }
 
-    private void openReader(String filePath) {
+    private void openReader(String filePath, ProgressDialog pdialog) {
         Config config = new Config()
                 .setAllowedDirection(Config.AllowedDirection.ONLY_HORIZONTAL)
                 .setDirection(Config.Direction.HORIZONTAL)
@@ -108,25 +144,17 @@ private LayoutInflater inflater;
         FolioReader folioReader = FolioReader.get()
                 .setOnClosedListener(this)
                 .setConfig(config, true);
-        folioReader.openBook("file:///android_asset/"+filePath);
+        folioReader.openBook(getBaseContext().getFilesDir().getAbsolutePath() + "/"+filePath);
+        pdialog.dismiss();
         //folioReader.openBook("http://192.168.43.128/sabi/epub/epdf.pub_whats-left-of-me.epub");
     }
 
     private Boolean checkIfExist(String filePath) throws IOException {
-        AssetManager mg = getResources().getAssets();
-        InputStream is = null;
-        try {
-            is = mg.open(filePath);
-            return true;
-            //File exists so do something with it
-        } catch (IOException ex) {
-            return false;
-            //file does not exist
-        } finally {
-            if (is != null) {
-                is.close();
-            }
-        }
+        String path = getBaseContext().getFilesDir().getAbsolutePath() + "/" + filePath;
+        File file = new File(path);
+        Log.e("fileexist", file.getAbsolutePath());
+        return file.exists();
+
     }
 
 

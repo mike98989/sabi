@@ -158,5 +158,6 @@
     <orderEntry type="library" name="Gradle: com.folioreader:folioreader:0.5.4@aar" level="project" />
     <orderEntry type="library" name="Gradle: com.github.codetoart:r2-shared-kotlin:1.0.4-2@aar" level="project" />
     <orderEntry type="library" name="Gradle: com.github.codetoart:r2-streamer-kotlin:1.0.4-2@aar" level="project" />
+    <orderEntry type="library" name="Gradle: com.mindorks.android:prdownloader:0.5.0@aar" level="project" />
   </component>
 </module>

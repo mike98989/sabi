@@ -32,7 +32,7 @@ public class DownloadTask {
     public DownloadTask(Context context, String fileName, ProgressDialog pdialog) {
         this.context = context;
         this.downloadFileName = fileName;
-        this.downloadUrl = Constants.LOCAL_PATH+Constants.EPUB_REPO+downloadFileName;
+        this.downloadUrl = Sabi_Constants.LOCAL_PATH+Sabi_Constants.EPUB_REPO+downloadFileName;
         this.progressDialog = pdialog;
 
         //Start Downloading Task

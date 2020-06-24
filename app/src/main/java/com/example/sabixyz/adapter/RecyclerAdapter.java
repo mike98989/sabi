@@ -17,7 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sabixyz.BookDetailsFragment;
 import com.example.sabixyz.BookReadyActivity;
-import com.example.sabixyz.Constants;
+import com.example.sabixyz.Sabi_Constants;
 import com.example.sabixyz.OpenBookActivity;
 import com.example.sabixyz.R;
 import com.example.sabixyz.model.ListItem;
@@ -55,7 +55,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         holder.textViewAuthor.setText(listItem.getAuthor());
         holder.BookID = listItem.getId();
         holder.list = listItem;
-        Picasso.get().load(Constants.LOCAL_PATH+listItem.getImageUrl()).into(holder.imageView);
+        Picasso.get().load(Sabi_Constants.LOCAL_PATH+listItem.getImageUrl()).into(holder.imageView);
     }
 
     @Override
@@ -135,6 +135,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
             //Intent i = new Intent(activity, BookReadyActivity.class);
             Intent i = new Intent(activity, OpenBookActivity.class);
             i.putExtra("imageurl", list.getImageUrl());
+            i.putExtra("title", list.getHead());
             i.putExtra("content", list.getContent());
             i.putExtra("desc", list.getDescription());
             i.putExtra("filepath", list.getFilePath());

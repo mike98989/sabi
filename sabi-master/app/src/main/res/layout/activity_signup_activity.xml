@@ -1,0 +1,596 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.core.widget.NestedScrollView  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/book2_bg"
+    tools:context=".SignupActivity">
+<FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/fragment_container"
+   >
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="0dp">
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="112dp"
+        android:layout_height="95dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/sabi_logo_white" />
+    <TextView
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:textAlignment="center"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="@font/avenirnextltpro_regular"
+        android:text="Hola"
+        android:layout_below="@+id/logo"
+        android:textColor="@color/white"
+        android:textSize="40dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.127"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.041" />
+
+    <TextView
+        android:layout_below="@+id/logo"
+        android:id="@+id/sub_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="@font/avenirnextltpro_regular"
+        android:textAlignment="center"
+        android:text="Reading just got a lot better"
+        android:textColor="#fff"
+        android:textSize="13dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+         />
+
+
+    <LinearLayout
+        android:id="@+id/linearlayout_user_success_message"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/sub_header"
+        android:layout_marginTop="15dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="30dp"
+        android:visibility="gone"
+        android:background="@drawable/white_rounded_top_layout"
+        >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="600dp">
+        <TextView
+            android:id="@+id/tv_signup_success_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/poppins_bold_1"
+            android:text="Voila"
+            android:layout_marginBottom="5dp"
+            android:textColor="@color/black"
+            android:textSize="25dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.127"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.041" />
+
+
+        <ImageView
+            android:id="@+id/img_ok"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="10dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_ok" />
+
+        <TextView
+            android:id="@+id/tv_signup_success_message"
+            android:layout_below="@+id/tv_signup_success_title"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/avenirnextltpro_regular"
+            android:textAlignment="center"
+            android:paddingBottom="5dp"
+            android:textColor="@color/black"
+            android:lineHeight="40dp"
+            android:text="An Email have been sent to you mike@test.com. Please confirm by filling the activation code on the app"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            />
+
+        <Button
+            android:id="@+id/btn_signup_success_continue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_black_btn_no_border"
+            android:textColor="@color/white"
+            android:text="Continue"
+            android:layout_marginTop="10dp"
+            android:drawableRight="@drawable/ic_arrow_forward_white_24dp"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:textAllCaps="false"/>
+    </LinearLayout>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/linearlayout_user_signup"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/sub_header"
+        android:layout_marginTop="15dp"
+        android:paddingTop="10dp"
+        android:visibility="visible"
+        android:background="@drawable/white_rounded_top_layout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.22"
+        tools:layout_editor_absoluteX="0dp">
+
+
+        <TextView
+            android:id="@+id/signup_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/poppins_bold_1"
+            android:text="User Signup"
+            android:layout_marginBottom="20dp"
+            android:textColor="@color/black"
+            android:textSize="25dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.127"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.041" />
+
+        <TextView
+            android:id="@+id/tv_return_msg"
+            android:layout_below="@+id/signup_title"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:visibility="gone"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/avenirnextltpro_regular"
+            android:textAlignment="center"
+            android:paddingBottom="5dp"
+            android:text="Error Message"
+            android:drawableLeft="@drawable/ic_error_orange_24dp"
+            android:textColor="@color/sabiOrange"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            />
+
+
+    <LinearLayout
+        android:background="@drawable/round_no_border_white_text_field"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal"
+        android:paddingLeft="10dp"
+        android:paddingTop="5dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:paddingBottom="5dp">
+
+        <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/radio_im_a_student"
+            android:checked="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="I am a Student"/>
+
+        <RadioButton
+            android:id="@+id/radio_im_not_a_student"
+            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="I am NOT a Student"/>
+        </RadioGroup>
+
+    </LinearLayout>
+
+        <LinearLayout
+            android:background="@drawable/round_no_border_white_text_field"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal"
+            android:paddingLeft="20dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp">
+
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_bold_1"
+                android:paddingTop="8dp"
+                android:text="@string/signup_user_fname"
+                android:textColor="@color/black" />
+
+            <EditText
+                android:id="@+id/edt_user_fname"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_alignParentEnd="true"
+                android:layout_gravity="right"
+                android:background="@color/transparent"
+                android:hint="@string/user_fname"
+                android:inputType="text"
+                android:textColorHint="@color/sabiGrey" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:background="@drawable/round_no_border_white_text_field"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal"
+            android:paddingLeft="20dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp">
+
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_bold_1"
+                android:paddingTop="8dp"
+                android:text="@string/signup_user_lname"
+                android:textColor="@color/black" />
+
+            <EditText
+                android:id="@+id/edt_user_lname"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_alignParentEnd="true"
+                android:layout_gravity="right"
+                android:background="@color/transparent"
+                android:hint="@string/user_lname"
+                android:inputType="text"
+                android:textColorHint="@color/sabiGrey" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:background="@drawable/round_no_border_white_text_field"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal"
+            android:paddingLeft="20dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp">
+
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_bold_1"
+                android:paddingTop="8dp"
+                android:text="@string/signup_user_phone"
+                android:textColor="@color/black" />
+
+            <EditText
+                android:id="@+id/edt_user_phone"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_alignParentEnd="true"
+                android:layout_gravity="right"
+                android:background="@color/transparent"
+                android:hint="@string/user_phone"
+                android:inputType="phone"
+                android:textColorHint="@color/sabiGrey" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="10dp"
+            android:paddingLeft="20dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:background="@drawable/round_no_border_white_text_field">
+
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_bold_1"
+                android:paddingTop="8dp"
+                android:textColor="@color/black"
+                android:text="@string/signup_user_email"/>
+
+            <EditText
+                android:layout_gravity="right"
+                android:id="@+id/edt_user_email"
+                android:inputType="textEmailAddress"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:hint="@string/user_email"
+                android:layout_alignParentEnd="true"
+                android:textColorHint="@color/sabiGrey"
+                android:background="@color/transparent"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linear_layout_student_fields"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <LinearLayout
+            android:id="@+id/linearlayout_signup_school"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="10dp"
+            android:paddingLeft="20dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:background="@drawable/round_no_border_white_text_field">
+
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_bold_1"
+                android:paddingTop="8dp"
+                android:textColor="@color/black"
+                android:text="@string/signup_school"/>
+
+            <EditText
+                android:layout_gravity="right"
+                android:id="@+id/edt_school"
+                android:inputType="textEmailAddress"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:hint="@string/signup_school"
+                android:layout_alignParentEnd="true"
+                android:textColorHint="@color/sabiGrey"
+                android:background="@color/transparent"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearlayout_signup_faculty"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="10dp"
+            android:paddingLeft="20dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:background="@drawable/round_no_border_white_text_field">
+
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_bold_1"
+                android:paddingTop="8dp"
+                android:textColor="@color/black"
+                android:text="@string/signup_faculty"/>
+
+            <EditText
+                android:layout_gravity="right"
+                android:id="@+id/edt_faculty"
+                android:inputType="textEmailAddress"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:hint="@string/signup_faculty"
+                android:layout_alignParentEnd="true"
+                android:textColorHint="@color/sabiGrey"
+                android:background="@color/transparent"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearlayout_signup_department"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="10dp"
+            android:paddingLeft="20dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:background="@drawable/round_no_border_white_text_field">
+
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_bold_1"
+                android:paddingTop="8dp"
+                android:textColor="@color/black"
+                android:text="@string/signup_department"/>
+
+            <EditText
+                android:layout_gravity="right"
+                android:id="@+id/edt_department"
+                android:inputType="textEmailAddress"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:hint="@string/signup_department"
+                android:layout_alignParentEnd="true"
+                android:textColorHint="@color/sabiGrey"
+                android:background="@color/transparent"/>
+
+        </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="10dp"
+            android:paddingLeft="20dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:background="@drawable/round_no_border_white_text_field">
+
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_bold_1"
+                android:paddingTop="8dp"
+                android:textColor="@color/black"
+                android:text="@string/signup_password"/>
+
+            <EditText
+                android:layout_gravity="right"
+                android:id="@+id/edt_user_password"
+                android:inputType="textPassword"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:hint="@string/signup_asterics"
+                android:layout_alignParentEnd="true"
+                android:textColorHint="@color/sabiGrey"
+                android:background="@color/transparent"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="10dp"
+            android:paddingLeft="20dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:background="@drawable/round_no_border_white_text_field">
+
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_bold_1"
+                android:paddingTop="4dp"
+                android:textColor="@color/black"
+                android:text="@string/signup_confirm_password"/>
+
+            <EditText
+                android:layout_gravity="right"
+                android:id="@+id/edt_user_confirm_password"
+                android:inputType="textPassword"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:hint="@string/signup_asterics"
+                android:layout_alignParentEnd="true"
+                android:textColorHint="@color/sabiGrey"
+                android:background="@color/transparent"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="20dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp">
+
+            <CheckBox android:id="@+id/checkbox_privacy_policy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+
+            <TextView
+                android:id="@+id/txt_privacy_policy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:text="@string/privacy_policy_link"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <Button
+                android:id="@+id/btn_signup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_black_btn_no_border"
+                android:textColor="@color/white"
+                android:text="Signup"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:textAllCaps="false"/>
+
+            <TextView
+                android:id="@+id/tv_already_have_account"
+                android:layout_below="@+id/signup_title"
+                android:layout_width="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/avenirnextltpro_regular"
+                android:textAlignment="center"
+                android:text="I already have an account"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/sabiOrange"
+                android:textSize="15dp"
+                android:clickable="true"
+                android:textStyle="bold"
+                />
+
+            <TextView
+                android:id="@+id/tv_already_confirmation_code"
+                android:layout_below="@+id/signup_title"
+                android:layout_width="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/avenirnextltpro_regular"
+                android:textAlignment="center"
+                android:text="I already have a confirmation code"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                android:clickable="true"
+                android:textStyle="bold|italic"
+                />
+        </LinearLayout>
+
+    </LinearLayout>
+</RelativeLayout>
+</FrameLayout>
+</androidx.core.widget.NestedScrollView>

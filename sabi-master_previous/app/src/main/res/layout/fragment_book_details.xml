@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="20dp"
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp"
+    android:background="@color/transparent"
+    tools:context=".BookDetailsFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_book_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lineHeight="25sp"
+                android:textSize="20sp"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:text="Title goes here"
+                android:fontFamily="@font/poppins_bold_1"/>
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_marginTop="10dp"
+        android:id="@+id/imgview_book_cover"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imgview_book_cover"
+        android:orientation="vertical"
+        android:padding="15dp">
+
+
+
+        <TextView
+        android:id="@+id/tv_book_desc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:lineHeight="25sp"
+        android:textSize="18sp"
+        android:layout_gravity="center_vertical|end"
+        android:text="description goes here"
+        android:fontFamily="@font/avenir_35_light"/>
+    </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical"
+                android:padding="10dp"
+                android:layout_height="wrap_content">
+
+
+                <Button
+                    android:id="@+id/btn_buy_book"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="@drawable/rounded_black_btn_no_border"
+                    android:text="Buy Book"
+                    android:layout_marginBottom="10dp"
+                    android:textColor="@color/white"
+                    android:textAllCaps="false"/>
+
+
+                <Button
+                    android:id="@+id/btn_save_for_later"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="@drawable/rounded_orange_btn_no_border"
+                    android:text="Save For Later"
+
+                    android:textColor="@color/white"
+                    android:textAllCaps="false"/>
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

@@ -181,9 +181,84 @@
             android:layout_height="wrap_content"
             android:padding="5dp"
             android:layout_marginBottom="10dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="150dp"
+                android:textSize="18dp"
+                android:fontFamily="@font/avenir_35_light"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:text="School" />
+
+            <TextView
+                android:id="@+id/tv_user_school"
+                android:layout_width="match_parent"
+                android:textSize="14dp"
+                android:fontFamily="@font/avenir_35_light"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:text="University name" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="150dp"
+                android:textSize="18dp"
+                android:fontFamily="@font/avenir_35_light"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:text="Faculty" />
+
+            <TextView
+                android:id="@+id/tv_user_faculty"
+                android:layout_width="match_parent"
+                android:textSize="14dp"
+                android:fontFamily="@font/avenir_35_light"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:text="User Faculty" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="150dp"
+                android:textSize="18dp"
+                android:fontFamily="@font/avenir_35_light"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:text="Department" />
+
+            <TextView
+                android:id="@+id/tv_user_department"
+                android:layout_width="match_parent"
+                android:textSize="14dp"
+                android:fontFamily="@font/avenir_35_light"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:text="Department in school" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:layout_marginBottom="10dp"
             android:gravity="center"
             android:layout_marginTop="20dp"
-            android:orientation="horizontal">
+            android:orientation="vertical">
             <Button
                 android:id="@+id/btn_edit_profile"
                 android:layout_width="200dp"
@@ -194,6 +269,16 @@
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:background="@drawable/rounded_black_btn_no_border"/>
+            <TextView
+                android:id="@+id/tv_change_password"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textAlignment="center"
+                android:text="Change Password"
+                android:textColor="@color/sabiOrange"
+                android:layout_marginTop="15dp"
+                android:textSize="13dp"/>
+
         </LinearLayout>
 
 

@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="10dp"
-    android:paddingRight="10dp"
-    android:paddingTop="30dp"
-    android:background="@color/sabiGrey"
     tools:context=".UserProfileScreenFragment">
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="30dp"
+    android:paddingRight="30dp"
+    android:paddingTop="30dp"
+    android:background="@color/transparent">
+
+
 
     <LinearLayout
         android:id="@+id/linearlayout_profile_preview"
@@ -41,6 +48,7 @@
             android:fontFamily="@font/avenir_35_light"
             android:text="Click image to browse image file"
             android:textAlignment="center"
+            android:textStyle="bold"
             android:textSize="13sp"
             android:textColor="@color/black"
             />
@@ -80,7 +88,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/linearlayout_profile_preview"
-        android:paddingLeft="10dp"
         android:layout_marginTop="30dp"
         android:orientation="vertical">
 
@@ -98,7 +105,7 @@
                 android:fontFamily="@font/avenir_35_light"
                 android:text="First Name"
                 android:textColor="@color/black"
-                android:textSize="18dp"
+                android:textSize="16dp"
                 android:textStyle="bold" />
 
             <EditText
@@ -109,7 +116,7 @@
                 android:fontFamily="@font/avenir_35_light"
                 android:text="First Name"
                 android:textColor="@color/black"
-                android:textSize="18dp"
+                android:textSize="16dp"
                 android:inputType="text"/>
         </LinearLayout>
 
@@ -122,7 +129,7 @@
             android:orientation="horizontal">
             <TextView
                 android:layout_width="150dp"
-                android:textSize="18dp"
+                android:textSize="16dp"
                 android:fontFamily="@font/avenir_35_light"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
@@ -133,7 +140,7 @@
                 style="@style/textView"
                 android:id="@+id/edt_user_lastname"
                 android:layout_width="match_parent"
-                android:textSize="18dp"
+                android:textSize="16dp"
                 android:fontFamily="@font/avenir_35_light"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
@@ -152,7 +159,7 @@
             android:orientation="horizontal">
             <TextView
                 android:layout_width="150dp"
-                android:textSize="18dp"
+                android:textSize="16dp"
                 android:fontFamily="@font/avenir_35_light"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
@@ -163,7 +170,7 @@
                 style="@style/textView"
                 android:id="@+id/edt_user_phone"
                 android:layout_width="match_parent"
-                android:textSize="18dp"
+                android:textSize="16dp"
                 android:fontFamily="@font/avenir_35_light"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
@@ -180,7 +187,7 @@
             android:orientation="horizontal">
             <TextView
                 android:layout_width="150dp"
-                android:textSize="18dp"
+                android:textSize="16dp"
                 android:fontFamily="@font/avenir_35_light"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
@@ -190,13 +197,97 @@
             <EditText
                 android:id="@+id/edt_user_email2"
                 android:layout_width="match_parent"
-                android:textSize="18dp"
+                android:textSize="16dp"
                 style="@style/textView"
                 android:fontFamily="@font/avenir_35_light"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
                 android:text="johndoe@gmail.com"
                 android:inputType="textEmailAddress"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            style="@style/textView"
+            android:layout_marginBottom="20dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="150dp"
+                android:textSize="16dp"
+                android:fontFamily="@font/avenir_35_light"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:text="School" />
+
+            <EditText
+                android:id="@+id/edt_user_school"
+                android:layout_width="match_parent"
+                android:textSize="16dp"
+                style="@style/textView"
+                android:fontFamily="@font/avenir_35_light"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:text="University name"
+                android:inputType="text"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            style="@style/textView"
+            android:layout_marginBottom="20dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="150dp"
+                android:textSize="16dp"
+                android:fontFamily="@font/avenir_35_light"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:text="Faculty" />
+
+            <EditText
+                android:id="@+id/edt_user_faculty"
+                android:layout_width="match_parent"
+                android:textSize="16dp"
+                style="@style/textView"
+                android:fontFamily="@font/avenir_35_light"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:text="Student Faculty"
+                android:inputType="text"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            style="@style/textView"
+            android:layout_marginBottom="20dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="150dp"
+                android:textSize="16dp"
+                android:fontFamily="@font/avenir_35_light"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:text="Department" />
+
+            <EditText
+                android:id="@+id/edt_user_department"
+                android:layout_width="match_parent"
+                android:textSize="16dp"
+                style="@style/textView"
+                android:fontFamily="@font/avenir_35_light"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:text="Department name"
+                android:inputType="text"/>
         </LinearLayout>
 
 
@@ -226,3 +317,4 @@
 
 
 </RelativeLayout>
+</androidx.core.widget.NestedScrollView>

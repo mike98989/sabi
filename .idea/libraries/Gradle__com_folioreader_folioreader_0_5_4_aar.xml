@@ -1,8 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: com.folioreader:folioreader:0.5.4@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/3431cbbcd52473fc9620b7a206dd26eb/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/3431cbbcd52473fc9620b7a206dd26eb/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/dcd0867b384c82c9bebf56f679d0b9b7/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/dcd0867b384c82c9bebf56f679d0b9b7/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/dcd0867b384c82c9bebf56f679d0b9b7/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

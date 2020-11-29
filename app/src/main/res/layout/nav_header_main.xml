@@ -15,23 +15,6 @@
     >
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-        <de.hdodenhof.circleimageview.CircleImageView
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/circleImage_nav_header_profile_image"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:contentDescription="@string/nav_header_desc"
-            android:src="@drawable/default_user_icon"
-            app:civ_border_width="2dp"
-            android:elevation="10dp"
-            android:paddingTop="@dimen/nav_header_vertical_spacing"
-            app:civ_border_color="@color/white"/>
-    </LinearLayout>
-
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -40,11 +23,26 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:orientation="vertical">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/circleImage_nav_header_profile_image"
+            android:layout_width="80dp"
+            android:layout_height="60dp"
+            android:contentDescription="@string/nav_header_desc"
+            android:elevation="10dp"
+            android:layout_gravity="center"
+            android:paddingTop="@dimen/nav_header_vertical_spacing"
+            android:src="@drawable/default_user_icon"
+            app:civ_border_color="@color/white"
+            app:civ_border_width="2dp" />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
+        android:textAlignment="center"
         android:id="@+id/tv_nav_user_name"
         android:fontFamily="@font/avenirnextltpro_regular"
         android:text="@string/nav_header_title"
@@ -53,16 +51,20 @@
 
     <TextView
         android:id="@+id/tv_nav_user_phone"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/white"
+        android:textColor="@color/grey_color"
+        android:textSize="12dp"
+        android:textAlignment="center"
         android:text="07083938333" />
 
     <TextView
         android:id="@+id/tv_nav_user_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/white"
+        android:textColor="@color/grey_color"
+        android:textSize="12dp"
+        android:textAlignment="center"
         android:text="@string/nav_header_subtitle" />
     </LinearLayout>
 
@@ -70,10 +72,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="right"
+        android:paddingTop="20dp"
         android:gravity="right">
         <ImageView
-            android:layout_width="70dp"
-            android:layout_height="70dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:layout_gravity="right"
             android:src="@drawable/sabi_logo_white_sm"/>
     </LinearLayout>

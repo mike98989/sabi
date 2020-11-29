@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.core.widget.NestedScrollView  xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/sabiOrange"
-    android:padding="0dp"
-    android:id="@+id/fragment_container"
+    android:background="@drawable/book2_bg"
     tools:context=".SignupActivity">
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+<FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/fragment_container"
+   >
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="0dp">
     <ImageView
         android:id="@+id/logo"
         android:layout_width="112dp"
@@ -54,7 +54,7 @@
         android:fontFamily="@font/avenirnextltpro_regular"
         android:textAlignment="center"
         android:text="Reading just got a lot better"
-        android:textColor="#E4E2E2"
+        android:textColor="#fff"
         android:textSize="13dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -71,12 +71,15 @@
         android:layout_below="@+id/sub_header"
         android:layout_marginTop="15dp"
         android:paddingTop="10dp"
+        android:paddingBottom="30dp"
         android:visibility="gone"
         android:background="@drawable/white_rounded_top_layout"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintVertical_bias="0.22"
-        tools:layout_editor_absoluteX="0dp">
+        >
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="600dp">
         <TextView
             android:id="@+id/tv_signup_success_title"
             android:layout_width="match_parent"
@@ -135,7 +138,7 @@
             android:textAlignment="center"
             android:textStyle="bold"
             android:textAllCaps="false"/>
-
+    </LinearLayout>
     </LinearLayout>
 
 
@@ -193,7 +196,7 @@
 
 
     <LinearLayout
-        style="@style/textView"
+        android:background="@drawable/round_no_border_white_text_field"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
@@ -227,12 +230,12 @@
     </LinearLayout>
 
         <LinearLayout
-            style="@style/textView"
+            android:background="@drawable/round_no_border_white_text_field"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:orientation="horizontal"
-            android:paddingLeft="10dp"
+            android:paddingLeft="20dp"
             android:paddingTop="5dp"
             android:paddingBottom="5dp">
 
@@ -240,7 +243,7 @@
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_bold_1"
-                android:paddingTop="4dp"
+                android:paddingTop="8dp"
                 android:text="@string/signup_user_fname"
                 android:textColor="@color/black" />
 
@@ -258,12 +261,12 @@
         </LinearLayout>
 
         <LinearLayout
-            style="@style/textView"
+            android:background="@drawable/round_no_border_white_text_field"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:orientation="horizontal"
-            android:paddingLeft="10dp"
+            android:paddingLeft="20dp"
             android:paddingTop="5dp"
             android:paddingBottom="5dp">
 
@@ -271,7 +274,7 @@
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_bold_1"
-                android:paddingTop="4dp"
+                android:paddingTop="8dp"
                 android:text="@string/signup_user_lname"
                 android:textColor="@color/black" />
 
@@ -289,12 +292,12 @@
         </LinearLayout>
 
         <LinearLayout
-            style="@style/textView"
+            android:background="@drawable/round_no_border_white_text_field"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:orientation="horizontal"
-            android:paddingLeft="10dp"
+            android:paddingLeft="20dp"
             android:paddingTop="5dp"
             android:paddingBottom="5dp">
 
@@ -302,7 +305,7 @@
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_bold_1"
-                android:paddingTop="4dp"
+                android:paddingTop="8dp"
                 android:text="@string/signup_user_phone"
                 android:textColor="@color/black" />
 
@@ -324,16 +327,16 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginBottom="10dp"
-            android:paddingLeft="10dp"
+            android:paddingLeft="20dp"
             android:paddingTop="5dp"
             android:paddingBottom="5dp"
-            style="@style/textView">
+            android:background="@drawable/round_no_border_white_text_field">
 
             <TextView
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_bold_1"
-                android:paddingTop="4dp"
+                android:paddingTop="8dp"
                 android:textColor="@color/black"
                 android:text="@string/signup_user_email"/>
 
@@ -361,16 +364,16 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginBottom="10dp"
-            android:paddingLeft="10dp"
+            android:paddingLeft="20dp"
             android:paddingTop="5dp"
             android:paddingBottom="5dp"
-            style="@style/textView">
+            android:background="@drawable/round_no_border_white_text_field">
 
             <TextView
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_bold_1"
-                android:paddingTop="4dp"
+                android:paddingTop="8dp"
                 android:textColor="@color/black"
                 android:text="@string/signup_school"/>
 
@@ -393,16 +396,16 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginBottom="10dp"
-            android:paddingLeft="10dp"
+            android:paddingLeft="20dp"
             android:paddingTop="5dp"
             android:paddingBottom="5dp"
-            style="@style/textView">
+            android:background="@drawable/round_no_border_white_text_field">
 
             <TextView
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_bold_1"
-                android:paddingTop="4dp"
+                android:paddingTop="8dp"
                 android:textColor="@color/black"
                 android:text="@string/signup_faculty"/>
 
@@ -425,16 +428,16 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginBottom="10dp"
-            android:paddingLeft="10dp"
+            android:paddingLeft="20dp"
             android:paddingTop="5dp"
             android:paddingBottom="5dp"
-            style="@style/textView">
+            android:background="@drawable/round_no_border_white_text_field">
 
             <TextView
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_bold_1"
-                android:paddingTop="4dp"
+                android:paddingTop="8dp"
                 android:textColor="@color/black"
                 android:text="@string/signup_department"/>
 
@@ -458,16 +461,16 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginBottom="10dp"
-            android:paddingLeft="10dp"
+            android:paddingLeft="20dp"
             android:paddingTop="5dp"
             android:paddingBottom="5dp"
-            style="@style/textView">
+            android:background="@drawable/round_no_border_white_text_field">
 
             <TextView
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_bold_1"
-                android:paddingTop="4dp"
+                android:paddingTop="8dp"
                 android:textColor="@color/black"
                 android:text="@string/signup_password"/>
 
@@ -490,10 +493,10 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginBottom="10dp"
-            android:paddingLeft="10dp"
+            android:paddingLeft="20dp"
             android:paddingTop="5dp"
             android:paddingBottom="5dp"
-            style="@style/textView">
+            android:background="@drawable/round_no_border_white_text_field">
 
             <TextView
                 android:layout_width="150dp"
@@ -513,6 +516,28 @@
                 android:layout_alignParentEnd="true"
                 android:textColorHint="@color/sabiGrey"
                 android:background="@color/transparent"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="20dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp">
+
+            <CheckBox android:id="@+id/checkbox_privacy_policy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+
+            <TextView
+                android:id="@+id/txt_privacy_policy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:text="@string/privacy_policy_link"/>
 
         </LinearLayout>
         <LinearLayout
@@ -566,6 +591,6 @@
         </LinearLayout>
 
     </LinearLayout>
-    </RelativeLayout>
-    </ScrollView>
 </RelativeLayout>
+</FrameLayout>
+</androidx.core.widget.NestedScrollView>

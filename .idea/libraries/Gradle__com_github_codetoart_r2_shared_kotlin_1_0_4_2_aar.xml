@@ -1,8 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: com.github.codetoart:r2-shared-kotlin:1.0.4-2@aar">
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/afd239a3fffa5fc7c215ad8cfd82fe1f/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/afd239a3fffa5fc7c215ad8cfd82fe1f/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/ac43991cf1eb505435f8262713ad96af/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/ac43991cf1eb505435f8262713ad96af/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/ac43991cf1eb505435f8262713ad96af/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

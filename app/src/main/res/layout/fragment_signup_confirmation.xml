@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/sabiOrange"
+    android:background="@drawable/book2_bg"
     android:padding="0dp"
     tools:context=".SignupActivity">
 
@@ -115,16 +115,16 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginBottom="10dp"
-            android:paddingLeft="10dp"
+            android:paddingLeft="20dp"
             android:paddingTop="5dp"
             android:paddingBottom="5dp"
-            style="@style/textView">
+            android:background="@drawable/round_no_border_white_text_field">
 
             <TextView
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_bold_1"
-                android:paddingTop="4dp"
+                android:paddingTop="8dp"
                 android:textColor="@color/black"
                 android:text="@string/signup_user_email"/>
 
@@ -146,10 +146,10 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginBottom="10dp"
-            android:paddingLeft="10dp"
+            android:paddingLeft="20dp"
             android:paddingTop="5dp"
             android:paddingBottom="5dp"
-            style="@style/textView">
+            android:background="@drawable/round_no_border_white_text_field">
 
             <TextView
                 android:layout_width="150dp"
@@ -189,22 +189,7 @@
                 android:textStyle="bold"
                 android:textAllCaps="false"/>
 
-            <TextView
-                android:id="@+id/tv_already_have_account"
-                android:layout_below="@+id/signup_title"
-                android:layout_width="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/avenirnextltpro_regular"
-                android:textAlignment="center"
-                android:text="Please resend confirmation code"
-                android:layout_marginTop="30dp"
-                android:textColor="@color/sabiOrange"
-                android:textSize="15dp"
-                android:clickable="true"
-                android:textStyle="bold"
-                />
+
         </LinearLayout>
 
 

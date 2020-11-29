@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">sabi.xyz</string>
-    <!--<string name="localpath">http://172.20.10.3/sabi/</string>-->
-    <string name="localpath">http://sabi.xyz/</string>
+    <string name="localpath">http://172.20.10.3/sabi/</string>
+    <!--<string name="localpath">http://sabi.xyz/</string>-->
     <string name="title_activity_main">MainActivity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -12,6 +12,7 @@
 
     <string name="menu_home">Home</string>
     <string name="menu_payments">Payments</string>
+    <string name="menu_search">Book Search</string>
     <string name="menu_my_books">My Books</string>
     <string name="menu_categories">Categories</string>
     <string name="menu_my_profile">My Profile</string>
@@ -24,11 +25,15 @@
     <string name="user_id">0</string>
     <string name="user_email">johndoe@test.com</string>
     <string name="user_phone">+23470000000</string>
+    <string name="user_department">department</string>
+    <string name="user_school">school</string>
+    <string name="user_faculty">faculty</string>
     <string name="user_fname">First Name</string>
     <string name="user_lname">Last Name</string>
     <string name="first_name">John</string>
     <string name="last_name">Doe</string>
     <string name="full_name">John Doe</string>
+    <string name="mybook_list"></string>
     <string name="cookie">Cookie</string>
     <string name="user_profile_image_url"></string>
     <string name="user_profile_image_base64_string"></string>
@@ -47,6 +52,7 @@
     <string name="signup_asterics">********</string>
     <string name="signup_confirm_code">Confirmation Code</string>
     <string name="not_match_password">Passwords Do Not Match! Please try again</string>
+    <string name="privacy_policy_link"><u>I Agree to Sabi.XYZ Policy</u></string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
